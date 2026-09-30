@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Movie Reality — Worth Your Time?</title>
 
 <style>
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +19,7 @@ html {
 }
 
 body {
-    background: #080808;
+    background: #080b18;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
@@ -31,30 +33,33 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+
     width: 100%;
     height: 72px;
+
     z-index: 1000;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 5%;
-    background: rgba(8, 8, 8, 0.88);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 0 4%;
+
+    background: rgba(8, 11, 24, 0.88);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(100, 200, 255, 0.12);
 }
 
 .logo {
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 800;
     letter-spacing: 2px;
-    white-space: nowrap;
 }
 
 .logo span {
+    color: #6b7280;
     font-weight: 400;
-    color: #999;
 }
 
 nav {
@@ -64,54 +69,56 @@ nav {
 }
 
 nav a {
-    color: #ddd;
+    color: #cbd5e1;
     text-decoration: none;
     font-size: 14px;
-    transition: 0.3s;
+
+    transition: 0.25s;
 }
 
 nav a:hover {
-    color: #fff;
+    color: #6ee7ff;
 }
 
 /* SEARCH */
 
-.search-box {
-    display: flex;
-    align-items: center;
-    margin-left: 10px;
-}
-
 .search-box input {
-    width: 180px;
+    width: 190px;
     height: 36px;
-    padding: 0 14px;
 
-    border: 1px solid #333;
+    padding: 0 15px;
+
     border-radius: 20px;
+    border: 1px solid #26334f;
 
-    background: #151515;
-    color: #fff;
     outline: none;
+
+    background: #11172a;
+    color: white;
 }
 
 .search-box input::placeholder {
-    color: #777;
+    color: #64748b;
 }
 
 .search-box input:focus {
-    border-color: #777;
+    border-color: #6ee7ff;
 }
 
 /* =========================
-   HERO / TOP MOVIES
+   HERO
 ========================= */
 
 .hero {
     position: relative;
+
     height: 720px;
     min-height: 650px;
+
     overflow: hidden;
+
+    display: flex;
+    align-items: center;
 }
 
 .hero-background {
@@ -123,7 +130,8 @@ nav a:hover {
     background-position: center;
 
     filter: blur(2px);
-    transform: scale(1.04);
+
+    transform: scale(1.05);
 
     transition: background-image 0.8s ease;
 }
@@ -133,113 +141,131 @@ nav a:hover {
     inset: 0;
 
     background:
-        linear-gradient(to right, #080808 0%, rgba(8,8,8,0.85) 30%, rgba(8,8,8,0.25) 75%),
-        linear-gradient(to top, #080808 0%, transparent 45%);
+        linear-gradient(
+            90deg,
+            #080b18 0%,
+            rgba(8,11,24,0.88) 30%,
+            rgba(8,11,24,0.35) 75%,
+            #080b18 100%
+        ),
+
+        linear-gradient(
+            0deg,
+            #080b18 0%,
+            transparent 45%
+        );
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
 
-    height: 100%;
-    max-width: 1200px;
-    margin: auto;
+    width: 100%;
 
-    padding: 170px 5% 80px;
-
-    display: flex;
-    align-items: center;
-    gap: 60px;
+    padding: 120px 8% 80px;
 }
 
 .hero-info {
-    max-width: 600px;
+    max-width: 720px;
 }
 
 .hero-label {
-    font-size: 13px;
+    color: #6ee7ff;
+
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: #aaa;
+    letter-spacing: 4px;
+
+    font-size: 12px;
+    font-weight: bold;
+
     margin-bottom: 18px;
 }
 
 .hero-title {
-    font-size: clamp(45px, 6vw, 78px);
+    font-size: clamp(50px, 7vw, 90px);
+
     line-height: 0.95;
+
     margin-bottom: 25px;
+
+    letter-spacing: -2px;
 }
 
 .hero-score {
     display: inline-block;
 
     padding: 8px 15px;
-    margin-bottom: 20px;
 
-    border: 1px solid #555;
     border-radius: 4px;
 
-    font-size: 15px;
+    background: rgba(110,231,255,0.08);
+
+    border: 1px solid rgba(110,231,255,0.45);
+
+    color: #6ee7ff;
+
+    font-size: 14px;
     font-weight: bold;
+
+    margin-bottom: 22px;
 }
 
 .hero-description {
-    color: #ccc;
+    color: #cbd5e1;
+
+    max-width: 620px;
+
     line-height: 1.7;
+
     font-size: 16px;
+
     margin-bottom: 30px;
 }
 
 .review-button {
     display: inline-block;
 
-    padding: 13px 24px;
+    padding: 14px 25px;
 
-    background: #fff;
-    color: #000;
+    background: #6ee7ff;
+    color: #071018;
+
+    border-radius: 4px;
 
     text-decoration: none;
+
     font-size: 13px;
     font-weight: bold;
-
-    border-radius: 3px;
 
     transition: 0.3s;
 }
 
 .review-button:hover {
-    background: #ddd;
+    background: #ffffff;
+
     transform: translateY(-2px);
-}
-
-/* HERO POSTER */
-
-.hero-poster {
-    width: 250px;
-    flex-shrink: 0;
-
-    border-radius: 5px;
-    overflow: hidden;
-
-    box-shadow: 0 25px 60px rgba(0,0,0,0.6);
-}
-
-.hero-poster img {
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 /* HERO DOTS */
 
 .hero-dots {
     position: absolute;
+
     bottom: 35px;
-    left: 5%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
 
     display: flex;
-    gap: 8px;
-    z-index: 5;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
 }
 
 .hero-dot {
@@ -247,64 +273,81 @@ nav a:hover {
     height: 8px;
 
     border-radius: 50%;
-    background: #555;
+
+    background: #475569;
 
     cursor: pointer;
+
     transition: 0.3s;
 }
 
 .hero-dot.active {
-    width: 25px;
-    border-radius: 10px;
-    background: #fff;
+    width: 30px;
+
+    border-radius: 20px;
+
+    background: #6ee7ff;
 }
 
 /* =========================
-   GENERAL SECTION
+   FULL WIDTH SECTIONS
 ========================= */
 
 .section {
-    max-width: 1250px;
-    margin: auto;
-    padding: 70px 5%;
+    width: 100%;
+
+    padding: 75px 4%;
+
+    position: relative;
 }
 
 .section-header {
     display: flex;
-    align-items: center;
+
+    align-items: flex-end;
     justify-content: space-between;
 
-    margin-bottom: 25px;
+    margin-bottom: 28px;
 }
 
 .section-title {
-    font-size: 28px;
-    font-weight: 700;
+    font-size: 30px;
+
+    letter-spacing: -0.5px;
 }
 
 .section-subtitle {
-    color: #777;
+    color: #64748b;
+
     font-size: 13px;
+
+    margin-top: 7px;
 }
 
 /* =========================
-   MOVIE SLIDER
+   LATEST REVIEWS
 ========================= */
 
 .movie-slider-wrapper {
     position: relative;
+
+    width: 100%;
 }
 
 .movie-slider {
+    width: 100%;
+
     display: flex;
-    gap: 18px;
+
+    gap: 22px;
 
     overflow-x: auto;
+
     scroll-behavior: smooth;
 
     scrollbar-width: none;
 
-    padding: 10px 0 25px;
+    padding: 10px 4px 30px;
 }
 
 .movie-slider::-webkit-scrollbar {
@@ -316,7 +359,7 @@ nav a:hover {
 .movie-card {
     position: relative;
 
-    flex: 0 0 190px;
+    flex: 0 0 210px;
 
     cursor: pointer;
 }
@@ -324,13 +367,16 @@ nav a:hover {
 .movie-poster {
     position: relative;
 
-    width: 190px;
-    height: 285px;
+    width: 210px;
+    height: 315px;
 
-    border-radius: 5px;
     overflow: hidden;
 
-    background: #151515;
+    border-radius: 6px;
+
+    background: #11172a;
+
+    border: 1px solid #1d2942;
 }
 
 .movie-poster img {
@@ -348,22 +394,49 @@ nav a:hover {
     transform: scale(1.06);
 }
 
+/* PLACEHOLDER */
+
+.placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #11172a,
+            #1c2540
+        );
+
+    color: #475569;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
 /* HOVER DARK LAYER */
 
 .movie-hover-layer {
     position: absolute;
+
     inset: 0;
 
     display: flex;
+
     align-items: flex-end;
 
     padding: 18px;
 
     background:
         linear-gradient(
-            to top,
+            0deg,
             rgba(0,0,0,0.95),
-            rgba(0,0,0,0.05) 70%
+            transparent 70%
         );
 
     opacity: 0;
@@ -375,119 +448,75 @@ nav a:hover {
     opacity: 1;
 }
 
-.movie-hover-info {
-    width: 100%;
-}
-
 .movie-hover-info h3 {
     font-size: 17px;
-    margin-bottom: 7px;
+
+    margin-bottom: 6px;
 }
 
 .movie-hover-score {
-    font-size: 13px;
-    color: #ddd;
-}
+    color: #6ee7ff;
 
-/* MOVIE NAME */
+    font-size: 13px;
+
+    font-weight: bold;
+}
 
 .movie-name {
     margin-top: 12px;
 
     font-size: 15px;
-    font-weight: 600;
+
+    font-weight: bold;
 }
 
 .movie-meta {
-    margin-top: 5px;
+    color: #64748b;
 
-    color: #777;
     font-size: 12px;
+
+    margin-top: 5px;
 }
 
 /* =========================
-   SLIDER ARROWS
-========================= */
-
-.slider-arrow {
-    position: absolute;
-    top: 42%;
-
-    width: 48px;
-    height: 48px;
-
-    border: 0;
-    border-radius: 50%;
-
-    background: rgba(20,20,20,0.92);
-    color: white;
-
-    font-size: 25px;
-
-    cursor: pointer;
-
-    z-index: 10;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transition: 0.25s;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
-}
-
-.movie-slider-wrapper:hover .slider-arrow {
-    opacity: 1;
-    visibility: visible;
-}
-
-.slider-arrow:hover {
-    background: #fff;
-    color: #000;
-}
-
-.slider-left {
-    left: -24px;
-}
-
-.slider-right {
-    right: -24px;
-}
-
-/* =========================
-   POPUP
+   MOVIE POPUP
 ========================= */
 
 .movie-popup {
     position: absolute;
 
     left: 50%;
-    bottom: 15px;
+
+    bottom: 70px;
 
     width: 280px;
 
+    padding: 18px;
+
+    background: rgba(15, 20, 38, 0.98);
+
+    border: 1px solid #2b3b5d;
+
+    border-radius: 7px;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+
     transform: translate(-50%, 15px);
 
-    padding: 16px;
-
-    background: rgba(18,18,18,0.98);
-    border: 1px solid #333;
-    border-radius: 6px;
-
-    box-shadow: 0 15px 45px rgba(0,0,0,0.75);
-
     opacity: 0;
+
     visibility: hidden;
 
     transition: 0.25s;
 
-    z-index: 50;
+    z-index: 100;
 
     pointer-events: none;
 }
 
 .movie-card:hover .movie-popup {
     opacity: 1;
+
     visibility: visible;
 
     transform: translate(-50%, 0);
@@ -495,18 +524,25 @@ nav a:hover {
 
 .movie-popup h3 {
     font-size: 18px;
-    margin-bottom: 8px;
+
+    margin-bottom: 7px;
 }
 
 .popup-score {
+    color: #6ee7ff;
+
     font-size: 13px;
-    color: #bbb;
+
+    font-weight: bold;
+
     margin-bottom: 12px;
 }
 
 .popup-text {
-    color: #aaa;
+    color: #94a3b8;
+
     font-size: 13px;
+
     line-height: 1.5;
 }
 
@@ -515,61 +551,136 @@ nav a:hover {
 
     margin-top: 14px;
 
-    color: #fff;
-    text-decoration: none;
+    color: white;
 
     font-size: 12px;
+
+    text-decoration: none;
+
     font-weight: bold;
 }
 
 .popup-link:hover {
-    text-decoration: underline;
+    color: #6ee7ff;
 }
 
 /* =========================
-   OTHER SECTIONS
+   SLIDER ARROWS
 ========================= */
 
-.simple-grid {
-    display: flex;
-    gap: 18px;
+.slider-arrow {
+    position: absolute;
 
-    overflow-x: auto;
-    scrollbar-width: none;
+    top: 42%;
+
+    transform: translateY(-50%);
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    border: 1px solid #33415f;
+
+    background: rgba(10,15,30,0.95);
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 20;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: 0.25s;
 }
 
-.simple-grid::-webkit-scrollbar {
+.movie-slider-wrapper:hover .slider-arrow {
+    opacity: 1;
+
+    visibility: visible;
+}
+
+.slider-arrow:hover {
+    background: #6ee7ff;
+
+    color: #071018;
+
+    border-color: #6ee7ff;
+}
+
+.slider-left {
+    left: 15px;
+}
+
+.slider-right {
+    right: 15px;
+}
+
+/* =========================
+   OTHER MOVIE ROWS
+========================= */
+
+.movie-row {
+    width: 100%;
+
+    display: flex;
+
+    gap: 22px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+
+    padding-bottom: 15px;
+}
+
+.movie-row::-webkit-scrollbar {
     display: none;
 }
 
 .simple-card {
-    flex: 0 0 190px;
+    flex: 0 0 210px;
+
+    cursor: pointer;
 }
 
-.simple-card .placeholder {
-    width: 190px;
-    height: 285px;
+.simple-poster {
+    width: 210px;
+    height: 315px;
 
-    background: linear-gradient(135deg, #171717, #252525);
+    border-radius: 6px;
 
-    border-radius: 5px;
+    overflow: hidden;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #11172a;
 
-    color: #555;
-    font-size: 12px;
+    border: 1px solid #1d2942;
+}
+
+.simple-poster .placeholder {
+    transition: 0.3s;
+}
+
+.simple-card:hover .placeholder {
+    transform: scale(1.03);
 }
 
 .simple-card h3 {
     margin-top: 12px;
+
     font-size: 15px;
 }
 
 .simple-card p {
-    color: #666;
+    color: #64748b;
+
     font-size: 12px;
+
     margin-top: 5px;
 }
 
@@ -578,13 +689,16 @@ nav a:hover {
 ========================= */
 
 footer {
-    border-top: 1px solid #1c1c1c;
+    width: 100%;
 
-    padding: 45px 5%;
+    padding: 50px 4%;
 
     text-align: center;
 
-    color: #666;
+    border-top: 1px solid #18233b;
+
+    color: #475569;
+
     font-size: 12px;
 }
 
@@ -596,23 +710,24 @@ footer {
 
     header {
         height: auto;
+
         min-height: 65px;
 
-        padding: 15px 5%;
+        padding: 14px 4%;
 
         flex-wrap: wrap;
-        gap: 15px;
+
+        gap: 12px;
     }
 
     nav {
         width: 100%;
-        justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
-    }
 
-    nav a {
-        font-size: 12px;
+        justify-content: center;
+
+        gap: 16px;
+
+        flex-wrap: wrap;
     }
 
     .search-box {
@@ -620,31 +735,38 @@ footer {
     }
 
     .hero {
-        height: auto;
-        min-height: 750px;
+        min-height: 700px;
     }
 
     .hero-content {
-        padding-top: 150px;
-        padding-bottom: 80px;
-
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-
-        gap: 30px;
-    }
-
-    .hero-poster {
-        width: 170px;
+        padding: 140px 7% 100px;
     }
 
     .hero-title {
-        font-size: 45px;
+        font-size: 50px;
     }
 
     .hero-description {
         font-size: 14px;
+    }
+
+    .section {
+        padding: 55px 4%;
+    }
+
+    .movie-card,
+    .simple-card {
+        flex-basis: 170px;
+    }
+
+    .movie-poster,
+    .simple-poster {
+        width: 170px;
+        height: 255px;
+    }
+
+    .movie-popup {
+        width: 240px;
     }
 
     .slider-left {
@@ -654,24 +776,14 @@ footer {
     .slider-right {
         right: 5px;
     }
-
-    .movie-card {
-        flex-basis: 160px;
-    }
-
-    .movie-poster {
-        width: 160px;
-        height: 240px;
-    }
-
-    .movie-popup {
-        width: 240px;
-    }
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================
      HEADER
@@ -684,14 +796,22 @@ footer {
     </div>
 
     <nav>
+
         <a href="#home">Home</a>
+
         <a href="#movies">Movies</a>
+
         <a href="#genre">Genre</a>
+
         <a href="#artists">Artists</a>
 
         <div class="search-box">
-            <input type="text" placeholder="Search movies...">
+            <input
+                type="text"
+                placeholder="Search movies..."
+            >
         </div>
+
     </nav>
 
 </header>
@@ -703,64 +823,86 @@ footer {
 
 <section class="hero" id="home">
 
-    <div class="hero-background" id="heroBackground"></div>
+    <div
+        class="hero-background"
+        id="heroBackground"
+    ></div>
 
     <div class="hero-overlay"></div>
+
 
     <div class="hero-content">
 
         <div class="hero-info">
 
-            <div class="hero-label" id="heroLabel">
-                Top Review
+            <div
+                class="hero-label"
+                id="heroLabel"
+            >
+                TOP REVIEW
             </div>
 
-            <h1 class="hero-title" id="heroTitle">
+
+            <h1
+                class="hero-title"
+                id="heroTitle"
+            >
                 Project Hail Mary
             </h1>
 
-            <div class="hero-score" id="heroScore">
+
+            <div
+                class="hero-score"
+                id="heroScore"
+            >
                 MRP 9.5 / 10
             </div>
 
-            <p class="hero-description" id="heroDescription">
+
+            <p
+                class="hero-description"
+                id="heroDescription"
+            >
                 A spoiler-light review of Project Hail Mary.
                 Is it worth your time or a waste of it?
-                Find out without ruining the experience.
             </p>
 
-            <a href="#" class="review-button" id="heroButton">
+
+            <a
+                href="project-hail-mary.html"
+                class="review-button"
+                id="heroButton"
+            >
                 READ REVIEW
             </a>
 
         </div>
 
-        <div class="hero-poster">
-
-            <img
-                id="heroPoster"
-                src="project-hail-mary.jpg"
-                alt="Project Hail Mary poster"
-            >
-
-        </div>
-
     </div>
 
-    <div class="hero-dots" id="heroDots"></div>
+
+    <div
+        class="hero-dots"
+        id="heroDots"
+    ></div>
 
 </section>
+
 
 
 <!-- =========================
      LATEST REVIEWS
 ========================= -->
 
-<section class="section" id="movies">
+<section
+    class="section"
+    id="movies"
+>
 
     <div class="section-header">
 
         <div>
+
             <h2 class="section-title">
                 Latest Reviews
             </h2>
@@ -768,6 +910,7 @@ footer {
             <p class="section-subtitle">
                 Worth your time or waste?
             </p>
+
         </div>
 
     </div>
@@ -775,74 +918,89 @@ footer {
 
     <div class="movie-slider-wrapper">
 
+
         <button
             class="slider-arrow slider-left"
             onclick="slideMovies(-1)"
-            aria-label="Previous movies"
         >
             &#10094;
         </button>
 
 
-        <div class="movie-slider" id="latestSlider">
+        <div
+            class="movie-slider"
+            id="latestSlider"
+        >
 
 
             <!-- MOVIE 1 -->
 
-            <div class="movie-card">
+            <a
+                href="project-hail-mary.html"
+                style="text-decoration:none;color:white;"
+            >
 
-                <div class="movie-poster">
+                <div class="movie-card">
 
-                    <img
-                        src="project-hail-mary.jpg"
-                        alt="Project Hail Mary"
-                    >
+                    <div class="movie-poster">
 
-                    <div class="movie-hover-layer">
+                        <img
+                            src="project-hail-mary.jpg"
+                            alt="Project Hail Mary"
+                        >
 
-                        <div class="movie-hover-info">
+                        <div class="movie-hover-layer">
 
-                            <h3>Project Hail Mary</h3>
+                            <div class="movie-hover-info">
 
-                            <div class="movie-hover-score">
-                                MRP 9.5 / 10
+                                <h3>
+                                    Project Hail Mary
+                                </h3>
+
+                                <div class="movie-hover-score">
+                                    MRP 9.5 / 10
+                                </div>
+
                             </div>
 
                         </div>
 
                     </div>
 
-                </div>
-
-                <div class="movie-name">
-                    Project Hail Mary
-                </div>
-
-                <div class="movie-meta">
-                    Sci-Fi · Review
-                </div>
-
-
-                <div class="movie-popup">
-
-                    <h3>Project Hail Mary</h3>
-
-                    <div class="popup-score">
-                        MRP 9.5 / 10
+                    <div class="movie-name">
+                        Project Hail Mary
                     </div>
 
-                    <div class="popup-text">
-                        Spoiler-light Movie Reality review.
-                        Worth your time or a waste of it?
+                    <div class="movie-meta">
+                        Sci-Fi · Movie Review
                     </div>
 
-                    <a href="#" class="popup-link">
-                        WATCH REVIEW →
-                    </a>
+
+                    <div class="movie-popup">
+
+                        <h3>
+                            Project Hail Mary
+                        </h3>
+
+                        <div class="popup-score">
+                            MRP 9.5 / 10
+                        </div>
+
+                        <div class="popup-text">
+                            A spoiler-light Movie Reality review.
+                            Find out if this movie is worth your time.
+                        </div>
+
+                        <div class="popup-link">
+                            OPEN REVIEW →
+                        </div>
+
+                    </div>
 
                 </div>
 
-            </div>
+            </a>
+
 
 
             <!-- MOVIE 2 -->
@@ -857,17 +1015,28 @@ footer {
                     <div class="movie-hover-layer">
 
                         <div class="movie-hover-info">
-                            <h3>Movie Two</h3>
+
+                            <h3>
+                                Movie Two
+                            </h3>
+
                             <div class="movie-hover-score">
                                 MRP — / 10
                             </div>
+
                         </div>
 
                     </div>
+
                 </div>
 
-                <div class="movie-name">Movie Two</div>
-                <div class="movie-meta">Genre · Review</div>
+                <div class="movie-name">
+                    Movie Two
+                </div>
+
+                <div class="movie-meta">
+                    Genre · Review
+                </div>
 
                 <div class="movie-popup">
 
@@ -878,16 +1047,13 @@ footer {
                     </div>
 
                     <div class="popup-text">
-                        Review information will be added here.
+                        Review information will be added later.
                     </div>
-
-                    <a href="#" class="popup-link">
-                        WATCH REVIEW →
-                    </a>
 
                 </div>
 
             </div>
+
 
 
             <!-- MOVIE 3 -->
@@ -895,33 +1061,23 @@ footer {
             <div class="movie-card">
 
                 <div class="movie-poster">
+
                     <div class="placeholder">
                         POSTER
                     </div>
+
                 </div>
 
-                <div class="movie-name">Movie Three</div>
-                <div class="movie-meta">Genre · Review</div>
+                <div class="movie-name">
+                    Movie Three
+                </div>
 
-                <div class="movie-popup">
-
-                    <h3>Movie Three</h3>
-
-                    <div class="popup-score">
-                        MRP — / 10
-                    </div>
-
-                    <div class="popup-text">
-                        Review information will be added here.
-                    </div>
-
-                    <a href="#" class="popup-link">
-                        WATCH REVIEW →
-                    </a>
-
+                <div class="movie-meta">
+                    Genre · Review
                 </div>
 
             </div>
+
 
 
             <!-- MOVIE 4 -->
@@ -929,33 +1085,23 @@ footer {
             <div class="movie-card">
 
                 <div class="movie-poster">
+
                     <div class="placeholder">
                         POSTER
                     </div>
+
                 </div>
 
-                <div class="movie-name">Movie Four</div>
-                <div class="movie-meta">Genre · Review</div>
+                <div class="movie-name">
+                    Movie Four
+                </div>
 
-                <div class="movie-popup">
-
-                    <h3>Movie Four</h3>
-
-                    <div class="popup-score">
-                        MRP — / 10
-                    </div>
-
-                    <div class="popup-text">
-                        Review information will be added here.
-                    </div>
-
-                    <a href="#" class="popup-link">
-                        WATCH REVIEW →
-                    </a>
-
+                <div class="movie-meta">
+                    Genre · Review
                 </div>
 
             </div>
+
 
 
             <!-- MOVIE 5 -->
@@ -963,33 +1109,23 @@ footer {
             <div class="movie-card">
 
                 <div class="movie-poster">
+
                     <div class="placeholder">
                         POSTER
                     </div>
+
                 </div>
 
-                <div class="movie-name">Movie Five</div>
-                <div class="movie-meta">Genre · Review</div>
+                <div class="movie-name">
+                    Movie Five
+                </div>
 
-                <div class="movie-popup">
-
-                    <h3>Movie Five</h3>
-
-                    <div class="popup-score">
-                        MRP — / 10
-                    </div>
-
-                    <div class="popup-text">
-                        Review information will be added here.
-                    </div>
-
-                    <a href="#" class="popup-link">
-                        WATCH REVIEW →
-                    </a>
-
+                <div class="movie-meta">
+                    Genre · Review
                 </div>
 
             </div>
+
 
 
             <!-- MOVIE 6 -->
@@ -997,15 +1133,23 @@ footer {
             <div class="movie-card">
 
                 <div class="movie-poster">
+
                     <div class="placeholder">
                         POSTER
                     </div>
+
                 </div>
 
-                <div class="movie-name">Movie Six</div>
-                <div class="movie-meta">Genre · Review</div>
+                <div class="movie-name">
+                    Movie Six
+                </div>
+
+                <div class="movie-meta">
+                    Genre · Review
+                </div>
 
             </div>
+
 
 
             <!-- MOVIE 7 -->
@@ -1013,15 +1157,23 @@ footer {
             <div class="movie-card">
 
                 <div class="movie-poster">
+
                     <div class="placeholder">
                         POSTER
                     </div>
+
                 </div>
 
-                <div class="movie-name">Movie Seven</div>
-                <div class="movie-meta">Genre · Review</div>
+                <div class="movie-name">
+                    Movie Seven
+                </div>
+
+                <div class="movie-meta">
+                    Genre · Review
+                </div>
 
             </div>
+
 
 
             <!-- MOVIE 8 -->
@@ -1029,15 +1181,23 @@ footer {
             <div class="movie-card">
 
                 <div class="movie-poster">
+
                     <div class="placeholder">
                         POSTER
                     </div>
+
                 </div>
 
-                <div class="movie-name">Movie Eight</div>
-                <div class="movie-meta">Genre · Review</div>
+                <div class="movie-name">
+                    Movie Eight
+                </div>
+
+                <div class="movie-meta">
+                    Genre · Review
+                </div>
 
             </div>
+
 
 
             <!-- MOVIE 9 -->
@@ -1045,15 +1205,23 @@ footer {
             <div class="movie-card">
 
                 <div class="movie-poster">
+
                     <div class="placeholder">
                         POSTER
                     </div>
+
                 </div>
 
-                <div class="movie-name">Movie Nine</div>
-                <div class="movie-meta">Genre · Review</div>
+                <div class="movie-name">
+                    Movie Nine
+                </div>
+
+                <div class="movie-meta">
+                    Genre · Review
+                </div>
 
             </div>
+
 
 
             <!-- MOVIE 10 -->
@@ -1061,13 +1229,20 @@ footer {
             <div class="movie-card">
 
                 <div class="movie-poster">
+
                     <div class="placeholder">
                         POSTER
                     </div>
+
                 </div>
 
-                <div class="movie-name">Movie Ten</div>
-                <div class="movie-meta">Genre · Review</div>
+                <div class="movie-name">
+                    Movie Ten
+                </div>
+
+                <div class="movie-meta">
+                    Genre · Review
+                </div>
 
             </div>
 
@@ -1078,7 +1253,6 @@ footer {
         <button
             class="slider-arrow slider-right"
             onclick="slideMovies(1)"
-            aria-label="Next movies"
         >
             &#10095;
         </button>
@@ -1088,59 +1262,9 @@ footer {
 </section>
 
 
+
 <!-- =========================
      TOP MOVIES
-========================= -->
-
-<section class="section" id="genre">
-
-    <div class="section-header">
-
-        <div>
-            <h2 class="section-title">
-                Top Movies
-            </h2>
-
-            <p class="section-subtitle">
-                Movies that scored high on Movie Reality
-            </p>
-        </div>
-
-    </div>
-
-    <div class="simple-grid">
-
-        <div class="simple-card">
-            <div class="placeholder">POSTER</div>
-            <h3>Top Movie</h3>
-            <p>MRP Score</p>
-        </div>
-
-        <div class="simple-card">
-            <div class="placeholder">POSTER</div>
-            <h3>Top Movie</h3>
-            <p>MRP Score</p>
-        </div>
-
-        <div class="simple-card">
-            <div class="placeholder">POSTER</div>
-            <h3>Top Movie</h3>
-            <p>MRP Score</p>
-        </div>
-
-        <div class="simple-card">
-            <div class="placeholder">POSTER</div>
-            <h3>Top Movie</h3>
-            <p>MRP Score</p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     LATEST MOVIES
 ========================= -->
 
 <section class="section">
@@ -1148,46 +1272,194 @@ footer {
     <div class="section-header">
 
         <div>
+
             <h2 class="section-title">
-                Latest Movies
+                Top Movies
             </h2>
 
             <p class="section-subtitle">
-                Recently released movies
+                Movies that made the cut
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="movie-row">
+
+        <div class="simple-card">
+            <div class="simple-poster">
+                <div class="placeholder">
+                    POSTER
+                </div>
+            </div>
+
+            <h3>
+                Top Movie
+            </h3>
+
+            <p>
+                MRP Score
+            </p>
+        </div>
+
+
+        <div class="simple-card">
+            <div class="simple-poster">
+                <div class="placeholder">
+                    POSTER
+                </div>
+            </div>
+
+            <h3>
+                Top Movie
+            </h3>
+
+            <p>
+                MRP Score
+            </p>
+        </div>
+
+
+        <div class="simple-card">
+            <div class="simple-poster">
+                <div class="placeholder">
+                    POSTER
+                </div>
+            </div>
+
+            <h3>
+                Top Movie
+            </h3>
+
+            <p>
+                MRP Score
+            </p>
+        </div>
+
+
+        <div class="simple-card">
+            <div class="simple-poster">
+                <div class="placeholder">
+                    POSTER
+                </div>
+            </div>
+
+            <h3>
+                Top Movie
+            </h3>
+
+            <p>
+                MRP Score
             </p>
         </div>
 
     </div>
 
-    <div class="simple-grid">
+</section>
 
-        <div class="simple-card">
-            <div class="placeholder">POSTER</div>
-            <h3>Latest Movie</h3>
-            <p>Coming to Movie Reality</p>
+
+
+<!-- =========================
+     LATEST MOVIES
+========================= -->
+
+<section
+    class="section"
+    id="artists"
+>
+
+    <div class="section-header">
+
+        <div>
+
+            <h2 class="section-title">
+                Latest Movies
+            </h2>
+
+            <p class="section-subtitle">
+                Recently released
+            </p>
+
         </div>
 
-        <div class="simple-card">
-            <div class="placeholder">POSTER</div>
-            <h3>Latest Movie</h3>
-            <p>Coming to Movie Reality</p>
-        </div>
+    </div>
+
+
+    <div class="movie-row">
 
         <div class="simple-card">
-            <div class="placeholder">POSTER</div>
-            <h3>Latest Movie</h3>
-            <p>Coming to Movie Reality</p>
+            <div class="simple-poster">
+                <div class="placeholder">
+                    POSTER
+                </div>
+            </div>
+
+            <h3>
+                Latest Movie
+            </h3>
+
+            <p>
+                Recently Released
+            </p>
         </div>
 
+
         <div class="simple-card">
-            <div class="placeholder">POSTER</div>
-            <h3>Latest Movie</h3>
-            <p>Coming to Movie Reality</p>
+            <div class="simple-poster">
+                <div class="placeholder">
+                    POSTER
+                </div>
+            </div>
+
+            <h3>
+                Latest Movie
+            </h3>
+
+            <p>
+                Recently Released
+            </p>
+        </div>
+
+
+        <div class="simple-card">
+            <div class="simple-poster">
+                <div class="placeholder">
+                    POSTER
+                </div>
+            </div>
+
+            <h3>
+                Latest Movie
+            </h3>
+
+            <p>
+                Recently Released
+            </p>
+        </div>
+
+
+        <div class="simple-card">
+            <div class="simple-poster">
+                <div class="placeholder">
+                    POSTER
+                </div>
+            </div>
+
+            <h3>
+                Latest Movie
+            </h3>
+
+            <p>
+                Recently Released
+            </p>
         </div>
 
     </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -1199,41 +1471,87 @@ footer {
     <div class="section-header">
 
         <div>
+
             <h2 class="section-title">
                 Coming Soon
             </h2>
 
             <p class="section-subtitle">
-                Movies we are watching next
+                Movies coming to Movie Reality
             </p>
+
         </div>
 
     </div>
 
-    <div class="simple-grid">
+
+    <div class="movie-row">
 
         <div class="simple-card">
-            <div class="placeholder">COMING SOON</div>
-            <h3>Movie</h3>
-            <p>Coming Soon</p>
+            <div class="simple-poster">
+                <div class="placeholder">
+                    COMING SOON
+                </div>
+            </div>
+
+            <h3>
+                Upcoming Movie
+            </h3>
+
+            <p>
+                Coming Soon
+            </p>
         </div>
 
-        <div class="simple-card">
-            <div class="placeholder">COMING SOON</div>
-            <h3>Movie</h3>
-            <p>Coming Soon</p>
-        </div>
 
         <div class="simple-card">
-            <div class="placeholder">COMING SOON</div>
-            <h3>Movie</h3>
-            <p>Coming Soon</p>
+            <div class="simple-poster">
+                <div class="placeholder">
+                    COMING SOON
+                </div>
+            </div>
+
+            <h3>
+                Upcoming Movie
+            </h3>
+
+            <p>
+                Coming Soon
+            </p>
         </div>
 
+
         <div class="simple-card">
-            <div class="placeholder">COMING SOON</div>
-            <h3>Movie</h3>
-            <p>Coming Soon</p>
+            <div class="simple-poster">
+                <div class="placeholder">
+                    COMING SOON
+                </div>
+            </div>
+
+            <h3>
+                Upcoming Movie
+            </h3>
+
+            <p>
+                Coming Soon
+            </p>
+        </div>
+
+
+        <div class="simple-card">
+            <div class="simple-poster">
+                <div class="placeholder">
+                    COMING SOON
+                </div>
+            </div>
+
+            <h3>
+                Upcoming Movie
+            </h3>
+
+            <p>
+                Coming Soon
+            </p>
         </div>
 
     </div>
@@ -1241,61 +1559,90 @@ footer {
 </section>
 
 
+
 <!-- =========================
      FOOTER
 ========================= -->
 
 <footer>
-    © 2026 Movie Reality. Worth your time or waste?
+
+    © 2026 Movie Reality
+
 </footer>
+
 
 
 <script>
 
-/* =====================================
-   TOP 5 HERO MOVIES
-===================================== */
+/* =========================
+   HERO SLIDER
+========================= */
 
 const heroMovies = [
 
     {
         title: "Project Hail Mary",
+
         score: "MRP 9.5 / 10",
+
         description:
-            "A spoiler-light review of Project Hail Mary. Is it worth your time or a waste of it? Find out without ruining the experience.",
-        image: "project-hail-mary.jpg"
+        "A spoiler-light review of Project Hail Mary. Is it worth your time or a waste of it?",
+
+        image: "project-hail-mary.jpg",
+
+        link: "project-hail-mary.html"
     },
 
     {
         title: "Movie Two",
+
         score: "MRP — / 10",
+
         description:
-            "Review information will be added here.",
-        image: "project-hail-mary.jpg"
+        "Review information will be added later.",
+
+        image: "project-hail-mary.jpg",
+
+        link: "#"
     },
 
     {
         title: "Movie Three",
+
         score: "MRP — / 10",
+
         description:
-            "Review information will be added here.",
-        image: "project-hail-mary.jpg"
+        "Review information will be added later.",
+
+        image: "project-hail-mary.jpg",
+
+        link: "#"
     },
 
     {
         title: "Movie Four",
+
         score: "MRP — / 10",
+
         description:
-            "Review information will be added here.",
-        image: "project-hail-mary.jpg"
+        "Review information will be added later.",
+
+        image: "project-hail-mary.jpg",
+
+        link: "#"
     },
 
     {
         title: "Movie Five",
+
         score: "MRP — / 10",
+
         description:
-            "Review information will be added here.",
-        image: "project-hail-mary.jpg"
+        "Review information will be added later.",
+
+        image: "project-hail-mary.jpg",
+
+        link: "#"
     }
 
 ];
@@ -1303,28 +1650,45 @@ const heroMovies = [
 
 let currentHero = 0;
 
-const heroTitle = document.getElementById("heroTitle");
-const heroScore = document.getElementById("heroScore");
-const heroDescription = document.getElementById("heroDescription");
-const heroPoster = document.getElementById("heroPoster");
-const heroBackground = document.getElementById("heroBackground");
-const heroDots = document.getElementById("heroDots");
+
+const heroTitle =
+document.getElementById("heroTitle");
+
+const heroScore =
+document.getElementById("heroScore");
+
+const heroDescription =
+document.getElementById("heroDescription");
+
+const heroBackground =
+document.getElementById("heroBackground");
+
+const heroButton =
+document.getElementById("heroButton");
+
+const heroDots =
+document.getElementById("heroDots");
+
 
 
 /* CREATE DOTS */
 
 heroMovies.forEach((movie, index) => {
 
-    const dot = document.createElement("div");
+    const dot =
+    document.createElement("div");
 
-    dot.className = "hero-dot";
+    dot.className =
+    "hero-dot";
 
     if (index === 0) {
         dot.classList.add("active");
     }
 
     dot.onclick = () => {
+
         showHero(index);
+
     };
 
     heroDots.appendChild(dot);
@@ -1332,43 +1696,56 @@ heroMovies.forEach((movie, index) => {
 });
 
 
+
 function showHero(index) {
 
     currentHero = index;
 
-    const movie = heroMovies[index];
+    const movie =
+    heroMovies[index];
 
-    heroTitle.textContent = movie.title;
-    heroScore.textContent = movie.score;
-    heroDescription.textContent = movie.description;
 
-    heroPoster.src = movie.image;
+    heroTitle.textContent =
+    movie.title;
+
+    heroScore.textContent =
+    movie.score;
+
+    heroDescription.textContent =
+    movie.description;
 
     heroBackground.style.backgroundImage =
-        `url("${movie.image}")`;
+    `url("${movie.image}")`;
+
+    heroButton.href =
+    movie.link;
 
 
-    document.querySelectorAll(".hero-dot").forEach(
-        (dot, dotIndex) => {
+    document
+    .querySelectorAll(".hero-dot")
+    .forEach((dot, i) => {
 
-            dot.classList.toggle(
-                "active",
-                dotIndex === index
-            );
+        dot.classList.toggle(
+            "active",
+            i === index
+        );
 
-        }
-    );
+    });
 
 }
 
 
-/* AUTOMATIC HERO SLIDE */
+
+/* AUTO SLIDE EVERY 6 SECONDS */
 
 setInterval(() => {
 
     currentHero++;
 
-    if (currentHero >= heroMovies.length) {
+    if (
+        currentHero >=
+        heroMovies.length
+    ) {
         currentHero = 0;
     }
 
@@ -1378,54 +1755,69 @@ setInterval(() => {
 
 
 
-/* =====================================
+/* =========================
    LATEST REVIEWS SLIDER
-===================================== */
+========================= */
 
 function slideMovies(direction) {
 
     const slider =
-        document.getElementById("latestSlider");
-
-    const amount = 620;
+    document.getElementById("latestSlider");
 
     slider.scrollBy({
-        left: direction * amount,
+
+        left: direction * 650,
+
         behavior: "smooth"
+
     });
 
 }
 
 
-/* =====================================
+/* =========================
    SEARCH
-===================================== */
+========================= */
 
 const searchInput =
-    document.querySelector(".search-box input");
+document.querySelector(".search-box input");
 
-searchInput.addEventListener("keyup", function() {
 
-    const searchText =
-        this.value.toLowerCase();
+searchInput.addEventListener(
+"keyup",
+function() {
 
-    const movieCards =
-        document.querySelectorAll(".movie-card");
+    const text =
+    this.value.toLowerCase();
 
-    movieCards.forEach(card => {
+    const cards =
+    document.querySelectorAll(
+        "#latestSlider .movie-card"
+    );
 
-        const movieName =
-            card.querySelector(".movie-name");
 
-        if (!movieName) return;
+    cards.forEach(card => {
 
         const name =
-            movieName.textContent.toLowerCase();
+        card.querySelector(
+            ".movie-name"
+        );
 
-        if (name.includes(searchText)) {
+        if (!name) return;
+
+
+        if (
+            name.textContent
+            .toLowerCase()
+            .includes(text)
+        ) {
+
             card.style.display = "";
+
         } else {
+
             card.style.display = "none";
+
         }
 
     });
