@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About | Movie Reality</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080b18;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 72px;
+
+    background: rgba(8, 11, 24, 0.96);
+
+    backdrop-filter: blur(12px);
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 5%;
+
+    z-index: 1000;
+
+    border-bottom: 1px solid rgba(110, 231, 255, 0.12);
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 800;
+    letter-spacing: 1px;
+
+    color: #ffffff;
+
+    margin-right: 45px;
+
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #6ee7ff;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+nav a {
+    color: #cbd5e1;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #6ee7ff;
+}
+
+nav a.active {
+    color: #6ee7ff;
+}
+
+
+/* =========================
+   ABOUT HERO
+========================= */
+
+.about-hero {
+
+    margin-top: 72px;
+
+    min-height: 420px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(22, 131, 216, 0.18),
+            transparent 55%
+        );
+}
+
+.about-hero-content {
+    max-width: 850px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.about-label {
+
+    color: #6ee7ff;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+.about-hero h1 {
+
+    font-size: 64px;
+
+    line-height: 1.05;
+
+    margin-bottom: 22px;
+}
+
+.about-hero h1 span {
+    color: #6ee7ff;
+}
+
+.about-hero p {
+
+    color: #cbd5e1;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+
+    max-width: 700px;
+
+    margin: auto;
+}
+
+
+/* =========================
+   ABOUT CONTENT
+========================= */
+
+.about-section {
+
+    width: 100%;
+
+    padding: 70px 5%;
+}
+
+.about-container {
+
+    max-width: 950px;
+
+    margin: auto;
+}
+
+.about-box {
+
+    background: #10162a;
+
+    border: 1px solid rgba(110, 231, 255, 0.12);
+
+    border-radius: 14px;
+
+    padding: 45px;
+
+    margin-bottom: 25px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.25);
+}
+
+.about-box h2 {
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+}
+
+.about-box h2 span {
+    color: #6ee7ff;
+}
+
+.about-box p {
+
+    color: #cbd5e1;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   BIG STATEMENT
+========================= */
+
+.statement {
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    background: #050711;
+
+    border-top: 1px solid rgba(110, 231, 255, 0.08);
+
+    border-bottom: 1px solid rgba(110, 231, 255, 0.08);
+}
+
+.statement h2 {
+
+    font-size: 34px;
+
+    margin-bottom: 15px;
+}
+
+.statement h2 span {
+    color: #6ee7ff;
+}
+
+.statement p {
+
+    color: #94a3b8;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   TEAM
+========================= */
+
+.team {
+
+    text-align: center;
+
+    padding: 75px 20px;
+}
+
+.team h2 {
+
+    font-size: 32px;
+
+    margin-bottom: 15px;
+}
+
+.team h2 span {
+    color: #6ee7ff;
+}
+
+.team-intro {
+
+    color: #94a3b8;
+
+    margin-bottom: 40px;
+
+    font-size: 16px;
+}
+
+.team-card {
+
+    max-width: 350px;
+
+    margin: auto;
+
+    background: #10162a;
+
+    border: 1px solid rgba(110, 231, 255, 0.12);
+
+    border-radius: 14px;
+
+    padding: 35px 25px;
+}
+
+.team-number {
+
+    font-size: 55px;
+
+    font-weight: 800;
+
+    color: #6ee7ff;
+
+    margin-bottom: 10px;
+}
+
+.team-card h3 {
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+.team-card p {
+
+    color: #94a3b8;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   CLOSING
+========================= */
+
+.closing {
+
+    text-align: center;
+
+    padding: 80px 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #080b18,
+            #0b1730
+        );
+}
+
+.closing h2 {
+
+    font-size: 38px;
+
+    margin-bottom: 18px;
+}
+
+.closing h2 span {
+    color: #6ee7ff;
+}
+
+.closing p {
+
+    color: #cbd5e1;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+.home-button {
+
+    display: inline-block;
+
+    padding: 13px 25px;
+
+    background: #1683d8;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.home-button:hover {
+
+    background: #20a4ff;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    padding: 45px 5%;
+
+    background: #050711;
+
+    border-top: 1px solid rgba(110, 231, 255, 0.1);
+
+    text-align: center;
+}
+
+footer h2 {
+
+    margin-bottom: 10px;
+}
+
+footer p {
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 0 20px;
+    }
+
+    .logo {
+        margin-right: 20px;
+        font-size: 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .about-hero {
+        min-height: 400px;
+        padding: 60px 25px;
+    }
+
+    .about-hero h1 {
+        font-size: 43px;
+    }
+
+    .about-hero p {
+        font-size: 16px;
+    }
+
+    .about-section {
+        padding: 45px 20px;
+    }
+
+    .about-box {
+        padding: 30px 22px;
+    }
+
+    .about-box h2 {
+        font-size: 24px;
+    }
+
+    .about-box p {
+        font-size: 15px;
+    }
+
+    .statement h2 {
+        font-size: 27px;
+    }
+
+    .closing h2 {
+        font-size: 30px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+
+
+<div class="logo">
+    MOVIE <span>REALITY</span>
+</div>
+
+<nav>
+
+    <a href="index.html">
+        Home
+    </a>
+
+    <a href="index.html#movies">
+        Movies
+    </a>
+
+    <a href="index.html#genre">
+        Genre
+    </a>
+
+    <a href="index.html#artists">
+        Artists
+    </a>
+
+    <a href="about.html" class="active">
+        About
+    </a>
+
+</nav>
+
+
+</header>
+
+<!-- ABOUT HERO -->
+
+<section class="about-hero">
+
+
+<div class="about-hero-content">
+
+    <div class="about-label">
+        WELCOME TO MOVIE REALITY
+    </div>
+
+    <h1>
+        Movies are great.
+        <span>Wasting time is not.</span>
+    </h1>
+
+    <p>
+        A place made by a movie fan, for people who love movies
+        and want to know whether a film is really worth their time.
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- ABOUT CONTENT -->
+
+<section class="about-section">
+
+
+<div class="about-container">
+
+
+    <div class="about-box">
+
+        <h2>
+            Hi <span>everyone.</span>
+        </h2>
+
+        <p>
+            Thank you for visiting Movie Reality.
+        </p>
+
+        <p>
+            I am a huge movie fan. I love watching movies,
+            discovering new stories and getting lost in different
+            worlds for a couple of hours.
+        </p>
+
+        <p>
+            But there is one thing I really do not like.
+        </p>
+
+        <p>
+            Spending two or three hours watching a movie and
+            walking away thinking...
+            <strong>
+                "I just wasted my time."
+            </strong>
+        </p>
+
+    </div>
+
+
+
+    <div class="about-box">
+
+        <h2>
+            So I created <span>Movie Reality.</span>
+        </h2>
+
+        <p>
+            The idea is simple.
+        </p>
+
+        <p>
+            Before you spend your time watching a movie,
+            Movie Reality helps you decide whether it is
+            worth your time or a waste of it.
+        </p>
+
+        <p>
+            Our reviews are spoiler-light and focused on what
+            actually matters to a viewer — the experience,
+            the story, the entertainment and whether the movie
+            delivers what it promises.
+        </p>
+
+    </div>
+
+
+</div>
+
+
+</section>
+
+<!-- STATEMENT -->
+
+<section class="statement">
+
+
+<h2>
+    For people who <span>love movies.</span>
+</h2>
+
+<p>
+    For people who discover movies every week.<br>
+    For people who value their time.<br>
+    For people who do not want to be disappointed after watching a film.
+</p>
+
+
+</section>
+
+<!-- TEAM -->
+
+<section class="team">
+
+
+<h2>
+    The <span>Team</span>
+</h2>
+
+<p class="team-intro">
+    Behind Movie Reality is a very large team.
+</p>
+
+
+<div class="team-card">
+
+    <div class="team-number">
+        1
+    </div>
+
+    <h3>
+        Yep. Just One Person.
+    </h3>
+
+    <p>
+        No huge production team.
+        No boardroom full of executives.
+        Just one movie fan who wanted to build
+        something useful for other movie fans.
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- CLOSING -->
+
+<section class="closing">
+
+
+<h2>
+    Welcome to <span>Movie Reality.</span>
+</h2>
+
+<p>
+    Find a movie.<br>
+    Check the reality.<br>
+    Decide if it is worth your time.
+</p>
+
+<a
+    href="index.html"
+    class="home-button"
+>
+    Back to Movies
+</a>
+
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+
+<h2>
+    MOVIE REALITY
+</h2>
+
+<p>
+    Worth your time or a waste of it?
+</p>
+
+<p style="margin-top:12px;">
+    © 2026 Movie Reality
+</p>
+
+
+</footer>
+
+</body>
+</html>
