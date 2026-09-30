@@ -1,8 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Movie Reality</title>
 
     <style>
@@ -14,165 +16,329 @@
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #0b0b0b;
-            color: white;
+            background: #080808;
+            color: #ffffff;
         }
 
+        /* HEADER */
+
         header {
-            padding: 22px 7%;
-            border-bottom: 1px solid #252525;
+            height: 75px;
+            padding: 0 6%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #222;
+            background: #080808;
         }
 
         .logo {
-            font-size: 25px;
-            font-weight: bold;
-            letter-spacing: 1px;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
         }
 
         nav a {
             color: #aaa;
             text-decoration: none;
-            margin-left: 25px;
+            font-size: 14px;
         }
 
         nav a:hover {
-            color: white;
+            color: #fff;
         }
 
+        /* HERO */
+
         .hero {
-            min-height: 70vh;
-            padding: 100px 7%;
+            min-height: 650px;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
-            background:
-                linear-gradient(90deg, #0b0b0b 25%, rgba(11,11,11,0.7), rgba(11,11,11,0.2)),
-                radial-gradient(circle at 80% 50%, #333, #0b0b0b 55%);
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(
+                    90deg,
+                    #080808 5%,
+                    rgba(8,8,8,0.9) 35%,
+                    rgba(8,8,8,0.45) 70%,
+                    rgba(8,8,8,0.85) 100%
+                ),
+                url("project-hail-mary.jpg");
+
+            background-size: cover;
+            background-position: center;
+            filter: blur(1px);
+            transform: scale(1.04);
         }
 
         .hero-content {
-            max-width: 650px;
+            position: relative;
+            z-index: 2;
+            width: 55%;
+            margin-left: 7%;
+            padding: 80px 0;
         }
 
-        .tag {
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 3px;
+        .small-title {
+            color: #b8b8b8;
             font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
             margin-bottom: 20px;
         }
 
-        h1 {
-            font-size: 70px;
+        .hero h1 {
+            font-size: clamp(45px, 6vw, 82px);
             line-height: 0.95;
             margin-bottom: 25px;
-        }
-
-        .hero p {
-            color: #bbb;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            max-width: 700px;
         }
 
         .score {
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 25px;
+            display: inline-block;
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 20px;
         }
 
-        .button {
+        .hero-description {
+            color: #c4c4c4;
+            font-size: 17px;
+            line-height: 1.6;
+            max-width: 570px;
+            margin-bottom: 30px;
+        }
+
+        .review-button {
             display: inline-block;
-            background: white;
-            color: black;
-            padding: 13px 24px;
+            background: #ffffff;
+            color: #000000;
+            padding: 14px 24px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             border-radius: 4px;
         }
 
-        .section {
-            padding: 60px 7%;
+        .review-button:hover {
+            background: #dddddd;
         }
 
-        .section h2 {
-            font-size: 32px;
+        /* SLIDER CONTROLS */
+
+        .slider-controls {
+            position: absolute;
+            right: 7%;
+            bottom: 40px;
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .arrow {
+            width: 42px;
+            height: 42px;
+            border: 1px solid #555;
+            background: rgba(0,0,0,0.5);
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .arrow:hover {
+            background: white;
+            color: black;
+        }
+
+        .dots {
+            display: flex;
+            gap: 7px;
+            margin: 0 8px;
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            background: #666;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background: white;
+            width: 22px;
+            border-radius: 5px;
+        }
+
+        /* LATEST REVIEWS */
+
+        .section {
+            padding: 70px 7%;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             margin-bottom: 30px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+        }
+
+        .view-all {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .view-all:hover {
+            color: white;
         }
 
         .movies {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
         }
 
         .movie-card {
-            background: #151515;
+            background: #121212;
+            border: 1px solid #222;
             border-radius: 8px;
             overflow: hidden;
-            border: 1px solid #242424;
+            transition: transform 0.25s ease;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-5px);
         }
 
         .poster {
-            height: 300px;
-            background: linear-gradient(135deg, #333, #111);
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .placeholder {
+            height: 350px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: #1b1b1b;
             color: #777;
-            font-size: 18px;
-        }
-
-        .movie-info {
+            font-size: 14px;
+            text-align: center;
             padding: 20px;
         }
 
+        .movie-info {
+            padding: 18px;
+        }
+
         .movie-info h3 {
-            font-size: 21px;
-            margin-bottom: 10px;
+            font-size: 19px;
+            margin-bottom: 8px;
         }
 
         .movie-info p {
             color: #999;
+            font-size: 14px;
             line-height: 1.5;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
         }
 
         .mrp {
-            font-weight: bold;
-            font-size: 20px;
+            font-size: 18px;
+            font-weight: 800;
         }
+
+        /* FOOTER */
 
         footer {
-            border-top: 1px solid #252525;
-            padding: 30px 7%;
-            color: #777;
+            border-top: 1px solid #222;
+            padding: 35px 7%;
             text-align: center;
+            color: #666;
+            font-size: 13px;
         }
 
-        @media (max-width: 700px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
-            }
+        /* MOBILE */
 
-            nav a {
-                margin: 0 8px;
-            }
+        @media (max-width: 900px) {
 
-            h1 {
-                font-size: 48px;
+            .hero-content {
+                width: 80%;
             }
 
             .movies {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                height: auto;
+                padding: 20px 6%;
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            nav {
+                gap: 15px;
             }
 
             .hero {
-                min-height: 60vh;
-                padding: 70px 7%;
+                min-height: 600px;
+            }
+
+            .hero-content {
+                width: 86%;
+                margin-left: 7%;
+            }
+
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            .movies {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+
+            .poster,
+            .placeholder {
+                height: 250px;
+            }
+
+            .movie-info {
+                padding: 13px;
+            }
+
+            .movie-info h3 {
+                font-size: 16px;
+            }
+
+            .section-heading h2 {
+                font-size: 26px;
             }
         }
     </style>
@@ -180,8 +346,13 @@
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-    <div class="logo">MOVIE REALITY</div>
+
+    <div class="logo">
+        MOVIE REALITY
+    </div>
 
     <nav>
         <a href="#">Home</a>
@@ -189,90 +360,194 @@
         <a href="#">MRP Scores</a>
         <a href="#">About</a>
     </nav>
+
 </header>
 
+
+<!-- HERO / TOP 5 REVIEWS -->
+
 <section class="hero">
+
+    <div class="hero-background" id="heroBackground"></div>
+
     <div class="hero-content">
 
-        <div class="tag">Spoiler-light movie reviews</div>
+        <div class="small-title">
+            Top Review
+        </div>
 
-        <h1>Worth your time or a waste of it?</h1>
+        <h1 id="movieTitle">
+            Project Hail Mary
+        </h1>
 
-        <p>
-            Movie Reality gives you a quick, honest look at movies
-            without ruining the experience.
+        <div class="score" id="movieScore">
+            MRP 9.5 / 10
+        </div>
+
+        <p class="hero-description" id="movieDescription">
+            A spoiler-light look at whether Project Hail Mary
+            deserves your time.
         </p>
 
-        <div class="score">MRP 9.5 / 10</div>
-
-        <a href="#" class="button">READ LATEST REVIEW</a>
+        <a href="#" class="review-button">
+            READ REVIEW
+        </a>
 
     </div>
+
+
+    <!-- SLIDER CONTROLS -->
+
+    <div class="slider-controls">
+
+        <button class="arrow" onclick="previousMovie()">
+            ‹
+        </button>
+
+        <div class="dots">
+
+            <div class="dot active" onclick="showMovie(0)"></div>
+            <div class="dot" onclick="showMovie(1)"></div>
+            <div class="dot" onclick="showMovie(2)"></div>
+            <div class="dot" onclick="showMovie(3)"></div>
+            <div class="dot" onclick="showMovie(4)"></div>
+
+        </div>
+
+        <button class="arrow" onclick="nextMovie()">
+            ›
+        </button>
+
+    </div>
+
 </section>
+
+
+<!-- LATEST REVIEWS -->
 
 <section class="section">
 
-    <h2>Latest Reviews</h2>
+    <div class="section-heading">
+
+        <h2>
+            Latest Reviews
+        </h2>
+
+        <a href="#" class="view-all">
+            View all →
+        </a>
+
+    </div>
+
 
     <div class="movies">
 
+
+        <!-- PROJECT HAIL MARY -->
+
         <div class="movie-card">
 
-            <div class="poster">
-                PROJECT HAIL MARY
-            </div>
+            <img
+                src="project-hail-mary.jpg"
+                alt="Project Hail Mary poster"
+                class="poster"
+            >
 
             <div class="movie-info">
 
-                <h3>Project Hail Mary</h3>
+                <h3>
+                    Project Hail Mary
+                </h3>
 
                 <p>
-                    A spoiler-light look at whether this movie
-                    deserves your time.
+                    A spoiler-light look at the movie
+                    and whether it deserves your time.
                 </p>
 
-                <div class="mrp">MRP 9.5 / 10</div>
+                <div class="mrp">
+                    MRP 9.5 / 10
+                </div>
 
             </div>
 
         </div>
 
+
+        <!-- SECOND MOVIE -->
+
         <div class="movie-card">
 
-            <div class="poster">
-                VOICE MAIL FOR ISABEL
+            <div class="placeholder">
+                YOUR NEXT MOVIE
             </div>
 
             <div class="movie-info">
 
-                <h3>Voice Mail for Isabel</h3>
+                <h3>
+                    Coming Soon
+                </h3>
 
                 <p>
-                    Our spoiler-light take on the movie
-                    and the experience it offers.
+                    Your next Movie Reality review.
                 </p>
 
-                <div class="mrp">MRP 6.9 / 10</div>
+                <div class="mrp">
+                    MRP —
+                </div>
 
             </div>
 
         </div>
 
+
+        <!-- THIRD MOVIE -->
+
         <div class="movie-card">
 
-            <div class="poster">
-                NEW REVIEW
+            <div class="placeholder">
+                YOUR NEXT MOVIE
             </div>
 
             <div class="movie-info">
 
-                <h3>More reviews coming</h3>
+                <h3>
+                    Coming Soon
+                </h3>
 
                 <p>
-                    New Movie Reality reviews will appear here.
+                    Your next Movie Reality review.
                 </p>
 
-                <div class="mrp">MRP —</div>
+                <div class="mrp">
+                    MRP —
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOURTH MOVIE -->
+
+        <div class="movie-card">
+
+            <div class="placeholder">
+                YOUR NEXT MOVIE
+            </div>
+
+            <div class="movie-info">
+
+                <h3>
+                    Coming Soon
+                </h3>
+
+                <p>
+                    Your next Movie Reality review.
+                </p>
+
+                <div class="mrp">
+                    MRP —
+                </div>
 
             </div>
 
@@ -282,9 +557,133 @@
 
 </section>
 
+
+<!-- FOOTER -->
+
 <footer>
-    © 2026 Movie Reality. All rights reserved.
+
+    © 2026 Movie Reality
+
 </footer>
+
+
+<script>
+
+    const movies = [
+
+        {
+            title: "Project Hail Mary",
+            score: "MRP 9.5 / 10",
+            description:
+                "A spoiler-light look at whether Project Hail Mary deserves your time.",
+            image: "project-hail-mary.jpg"
+        },
+
+        {
+            title: "Movie Two",
+            score: "MRP —",
+            description:
+                "Your next Movie Reality review will appear here.",
+            image: "project-hail-mary.jpg"
+        },
+
+        {
+            title: "Movie Three",
+            score: "MRP —",
+            description:
+                "Your next Movie Reality review will appear here.",
+            image: "project-hail-mary.jpg"
+        },
+
+        {
+            title: "Movie Four",
+            score: "MRP —",
+            description:
+                "Your next Movie Reality review will appear here.",
+            image: "project-hail-mary.jpg"
+        },
+
+        {
+            title: "Movie Five",
+            score: "MRP —",
+            description:
+                "Your next Movie Reality review will appear here.",
+            image: "project-hail-mary.jpg"
+        }
+
+    ];
+
+
+    let currentMovie = 0;
+
+
+    function showMovie(index) {
+
+        currentMovie = index;
+
+        const movie = movies[index];
+
+        document.getElementById("movieTitle").textContent =
+            movie.title;
+
+        document.getElementById("movieScore").textContent =
+            movie.score;
+
+        document.getElementById("movieDescription").textContent =
+            movie.description;
+
+        document.getElementById("heroBackground").style.backgroundImage =
+            "linear-gradient(90deg, #080808 5%, rgba(8,8,8,0.9) 35%, rgba(8,8,8,0.45) 70%, rgba(8,8,8,0.85) 100%), url('" +
+            movie.image +
+            "')";
+
+
+        const dots =
+            document.querySelectorAll(".dot");
+
+        dots.forEach(function(dot, i) {
+
+            dot.classList.toggle(
+                "active",
+                i === index
+            );
+
+        });
+
+    }
+
+
+    function nextMovie() {
+
+        currentMovie =
+            (currentMovie + 1) % movies.length;
+
+        showMovie(currentMovie);
+
+    }
+
+
+    function previousMovie() {
+
+        currentMovie =
+            (currentMovie - 1 + movies.length)
+            % movies.length;
+
+        showMovie(currentMovie);
+
+    }
+
+
+    // Automatically change movie every 6 seconds
+
+    setInterval(function() {
+
+        nextMovie();
+
+    }, 6000);
+
+</script>
 
 </body>
 </html>
+```
