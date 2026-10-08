@@ -16,12 +16,12 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             background: #080b18;
-            color: white;
+            color: #ffffff;
         }
 
         a {
-            color: inherit;
             text-decoration: none;
+            color: inherit;
         }
 
         /* ================= HEADER ================= */
@@ -51,26 +51,26 @@
         nav {
             display: flex;
             align-items: center;
+            height: 100%;
             margin-left: 45px;
             gap: 28px;
-            height: 100%;
         }
 
         nav > a,
-        .nav-dropdown > .nav-title {
+        .nav-title {
             color: #ffffff;
             font-size: 15px;
-            cursor: pointer;
-            transition: 0.2s;
             white-space: nowrap;
+            cursor: pointer;
+            transition: color 0.2s ease;
         }
 
         nav > a:hover,
-        .nav-dropdown > .nav-title:hover {
+        .nav-title:hover {
             color: #6ee7ff;
         }
 
-        /* Dropdown parent */
+        /* ================= DROPDOWNS ================= */
 
         .nav-dropdown {
             position: relative;
@@ -79,36 +79,32 @@
             align-items: center;
         }
 
-        /* IMPORTANT:
-           No arrow here.
-        */
+        /* NO ARROW */
 
         .nav-title {
+            height: 100%;
             display: flex;
             align-items: center;
-            height: 100%;
         }
-
-        /* Dropdown */
 
         .dropdown-menu {
             position: absolute;
-            top: 69px;
+            top: 70px;
             left: 50%;
             transform: translateX(-50%);
+
+            width: 760px;
+            max-width: 90vw;
+
+            padding: 20px;
 
             background: #000000;
             border: 1px solid rgba(110, 231, 255, 0.25);
             border-radius: 8px;
 
-            padding: 20px;
-
-            min-width: 700px;
-            max-width: 90vw;
-
             display: grid;
-            grid-template-columns: repeat(4, minmax(150px, 1fr));
-            gap: 8px 25px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px 18px;
 
             opacity: 0;
             visibility: hidden;
@@ -118,21 +114,22 @@
         }
 
         /*
-           Invisible bridge prevents the dropdown disappearing
-           when moving the mouse from the title to the dropdown.
+        Invisible bridge.
+        This prevents the dropdown disappearing while
+        moving the mouse from Movies/Genre to the menu.
         */
 
         .dropdown-menu::before {
             content: "";
             position: absolute;
-            top: -15px;
+            top: -18px;
             left: 0;
-            right: 0;
-            height: 15px;
-            background: transparent;
+            width: 100%;
+            height: 18px;
         }
 
-        .nav-dropdown:hover .dropdown-menu {
+        .nav-dropdown:hover .dropdown-menu,
+        .nav-dropdown:focus-within .dropdown-menu {
             opacity: 1;
             visibility: visible;
             pointer-events: auto;
@@ -140,11 +137,14 @@
 
         .dropdown-menu a {
             display: block;
-            padding: 8px 10px;
+            padding: 9px 10px;
             border-radius: 5px;
+
             color: #ffffff;
             font-size: 14px;
-            transition: 0.2s;
+
+            transition: background 0.2s ease,
+                        color 0.2s ease;
         }
 
         .dropdown-menu a:hover {
@@ -152,26 +152,77 @@
             color: #6ee7ff;
         }
 
-        /* Search */
+        /* ================= SEARCH ================= */
 
-        .header-search {
+        .search-box {
             margin-left: auto;
             position: relative;
         }
 
-        .header-search input {
-            width: 220px;
+        #searchInput {
+            width: 230px;
             height: 38px;
-            padding: 0 15px;
+
+            padding: 0 16px;
+
             border: 1px solid rgba(110, 231, 255, 0.25);
             border-radius: 20px;
+
             outline: none;
+
             background: #101426;
-            color: white;
+            color: #ffffff;
+
+            font-size: 14px;
         }
 
-        .header-search input::placeholder {
-            color: #8b93a7;
+        #searchInput::placeholder {
+            color: #8d95a8;
+        }
+
+        #searchInput:focus {
+            border-color: #6ee7ff;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 46px;
+            right: 0;
+
+            width: 320px;
+            max-height: 400px;
+            overflow-y: auto;
+
+            background: #000000;
+            border: 1px solid rgba(110, 231, 255, 0.25);
+            border-radius: 8px;
+
+            display: none;
+        }
+
+        .search-result {
+            display: block;
+            padding: 12px 15px;
+            border-bottom: 1px solid #171b2b;
+        }
+
+        .search-result:last-child {
+            border-bottom: none;
+        }
+
+        .search-result:hover {
+            background: #111827;
+        }
+
+        .search-result-title {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .search-result-meta {
+            margin-top: 4px;
+            font-size: 12px;
+            color: #8d95a8;
         }
 
         /* ================= MAIN ================= */
@@ -185,9 +236,8 @@
         }
 
         .section-title {
-            color: #ffffff;
             font-size: 25px;
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
 
         /* ================= HERO ================= */
@@ -195,19 +245,28 @@
         .hero {
             position: relative;
             min-height: 470px;
-            overflow: hidden;
+
             display: flex;
             align-items: center;
+
             padding: 60px;
+
+            overflow: hidden;
+
             background:
-                linear-gradient(90deg, #080b18 15%, rgba(8,11,24,0.85) 45%, rgba(8,11,24,0.2)),
+                linear-gradient(
+                    90deg,
+                    #080b18 10%,
+                    rgba(8, 11, 24, 0.88) 45%,
+                    rgba(8, 11, 24, 0.25)
+                ),
                 #111827;
         }
 
         .hero-content {
-            max-width: 600px;
             position: relative;
             z-index: 2;
+            max-width: 600px;
         }
 
         .hero-content h1 {
@@ -217,15 +276,20 @@
 
         .hero-meta {
             color: #b9c0d0;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
         .hero-score {
             display: inline-block;
+
             background: #1683d8;
+
             padding: 7px 12px;
+
             border-radius: 5px;
+
             font-weight: bold;
+
             margin-bottom: 18px;
         }
 
@@ -237,9 +301,13 @@
 
         .hero-button {
             display: inline-block;
+
             background: #1683d8;
+
             padding: 11px 20px;
+
             border-radius: 5px;
+
             font-weight: bold;
         }
 
@@ -249,19 +317,26 @@
 
         .hero-dots {
             position: absolute;
+
             bottom: 20px;
             left: 50%;
+
             transform: translateX(-50%);
+
             display: flex;
             gap: 8px;
+
             z-index: 5;
         }
 
         .hero-dot {
             width: 9px;
             height: 9px;
+
             border-radius: 50%;
-            background: #555;
+
+            background: #555555;
+
             cursor: pointer;
         }
 
@@ -278,8 +353,11 @@
         .movie-row {
             display: flex;
             gap: 18px;
+
             overflow-x: auto;
+
             scroll-behavior: smooth;
+
             scrollbar-width: none;
         }
 
@@ -294,32 +372,46 @@
 
         .poster-wrap {
             position: relative;
+
             width: 100%;
             aspect-ratio: 2 / 3;
+
             overflow: hidden;
+
             border-radius: 7px;
+
             background: #121728;
         }
 
         .poster-wrap img {
             width: 100%;
             height: 100%;
+
             object-fit: cover;
+
             display: block;
         }
 
         .poster-score {
             position: absolute;
-            right: 8px;
+
             top: 8px;
-            background: rgba(0,0,0,0.8);
-            color: #6ee7ff;
+            right: 8px;
+
             padding: 5px 7px;
+
+            background: rgba(0, 0, 0, 0.85);
+
+            color: #6ee7ff;
+
             border-radius: 4px;
+
             font-size: 12px;
             font-weight: bold;
+
             opacity: 0;
-            transition: 0.2s;
+
+            transition: opacity 0.2s ease;
         }
 
         .movie-card:hover .poster-score {
@@ -328,7 +420,9 @@
 
         .movie-card h3 {
             margin-top: 9px;
+
             font-size: 15px;
+
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -336,25 +430,36 @@
 
         .movie-year {
             margin-top: 5px;
+
             color: #8d95a8;
+
             font-size: 13px;
         }
 
-        /* Slider arrows */
+        /* ================= SLIDER BUTTONS ================= */
 
         .slider-button {
             position: absolute;
+
             top: 42%;
+
             transform: translateY(-50%);
+
             width: 40px;
             height: 40px;
+
             border: none;
             border-radius: 50%;
-            background: rgba(0,0,0,0.8);
-            color: white;
+
+            background: rgba(0, 0, 0, 0.85);
+
+            color: #ffffff;
+
+            font-size: 22px;
+
             cursor: pointer;
-            font-size: 20px;
-            z-index: 5;
+
+            z-index: 10;
         }
 
         .slider-button:hover {
@@ -372,11 +477,15 @@
         /* ================= FOOTER ================= */
 
         footer {
-            border-top: 1px solid rgba(110, 231, 255, 0.15);
-            padding: 30px 40px;
-            text-align: center;
-            color: #737b8e;
             margin-top: 30px;
+
+            padding: 30px 40px;
+
+            text-align: center;
+
+            color: #737b8e;
+
+            border-top: 1px solid rgba(110, 231, 255, 0.15);
         }
 
         /* ================= MOBILE ================= */
@@ -389,16 +498,16 @@
 
             nav {
                 margin-left: 25px;
-                gap: 15px;
+                gap: 16px;
             }
 
-            .header-search {
+            .search-box {
                 display: none;
             }
 
             .dropdown-menu {
-                min-width: 600px;
-                grid-template-columns: repeat(3, minmax(140px, 1fr));
+                width: 650px;
+                grid-template-columns: repeat(3, 1fr);
             }
 
             section {
@@ -419,33 +528,44 @@
             header {
                 height: auto;
                 min-height: 65px;
+
                 flex-wrap: wrap;
+
                 padding: 12px 15px;
             }
 
             nav {
                 order: 3;
+
                 width: 100%;
-                overflow-x: auto;
+
                 margin: 10px 0 0;
+
+                overflow-x: auto;
+
                 padding-bottom: 5px;
             }
 
             nav > a,
-            .nav-dropdown > .nav-title {
+            .nav-title {
                 font-size: 13px;
             }
 
             .dropdown-menu {
                 position: fixed;
+
                 top: 105px;
+
                 left: 10px;
-                right: 10px;
+
                 transform: none;
-                min-width: auto;
+
                 width: calc(100% - 20px);
+
                 max-height: 70vh;
+
                 overflow-y: auto;
+
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -480,13 +600,15 @@
 
         <a href="index.html">Home</a>
 
+        <!-- MOVIES -->
+
         <div class="nav-dropdown">
 
-            <span class="nav-title">Movies</span>
+            <span class="nav-title">
+                Movies
+            </span>
 
             <div class="dropdown-menu">
-
-                <a href="movies.html">All Movies</a>
 
                 <a href="category.html?category=Popular%20Movies">
                     Popular Movies
@@ -576,54 +698,129 @@
 
         </div>
 
+
+        <!-- GENRE -->
+
         <div class="nav-dropdown">
 
-            <span class="nav-title">Genre</span>
+            <span class="nav-title">
+                Genre
+            </span>
 
             <div class="dropdown-menu">
 
-                <a href="genre-category.html?genre=Action">Action</a>
-                <a href="genre-category.html?genre=Adventure">Adventure</a>
-                <a href="genre-category.html?genre=Comedy">Comedy</a>
-                <a href="genre-category.html?genre=Drama">Drama</a>
+                <a href="genre-category.html?genre=Action">
+                    Action
+                </a>
 
-                <a href="genre-category.html?genre=Thriller">Thriller</a>
-                <a href="genre-category.html?genre=Sci-Fi">Sci-Fi</a>
-                <a href="genre-category.html?genre=Fantasy">Fantasy</a>
-                <a href="genre-category.html?genre=Crime">Crime</a>
+                <a href="genre-category.html?genre=Adventure">
+                    Adventure
+                </a>
 
-                <a href="genre-category.html?genre=Romance">Romance</a>
-                <a href="genre-category.html?genre=Horror">Horror</a>
-                <a href="genre-category.html?genre=Animation">Animation</a>
-                <a href="genre-category.html?genre=Documentary">Documentary</a>
+                <a href="genre-category.html?genre=Comedy">
+                    Comedy
+                </a>
 
-                <a href="genre-category.html?genre=Biography">Biography</a>
-                <a href="genre-category.html?genre=Historical">Historical</a>
-                <a href="genre-category.html?genre=War">War</a>
-                <a href="genre-category.html?genre=Sports">Sports</a>
+                <a href="genre-category.html?genre=Drama">
+                    Drama
+                </a>
 
-                <a href="genre-category.html?genre=Musical">Musical</a>
-                <a href="genre-category.html?genre=Western">Western</a>
-                <a href="genre-category.html?genre=Family">Family</a>
-                <a href="genre-category.html?genre=Kids">Kids</a>
+                <a href="genre-category.html?genre=Thriller">
+                    Thriller
+                </a>
+
+                <a href="genre-category.html?genre=Sci-Fi">
+                    Sci-Fi
+                </a>
+
+                <a href="genre-category.html?genre=Fantasy">
+                    Fantasy
+                </a>
+
+                <a href="genre-category.html?genre=Crime">
+                    Crime
+                </a>
+
+                <a href="genre-category.html?genre=Romance">
+                    Romance
+                </a>
+
+                <a href="genre-category.html?genre=Horror">
+                    Horror
+                </a>
+
+                <a href="genre-category.html?genre=Animation">
+                    Animation
+                </a>
+
+                <a href="genre-category.html?genre=Documentary">
+                    Documentary
+                </a>
+
+                <a href="genre-category.html?genre=Biography">
+                    Biography
+                </a>
+
+                <a href="genre-category.html?genre=Historical">
+                    Historical
+                </a>
+
+                <a href="genre-category.html?genre=War">
+                    War
+                </a>
+
+                <a href="genre-category.html?genre=Sports">
+                    Sports
+                </a>
+
+                <a href="genre-category.html?genre=Musical">
+                    Musical
+                </a>
+
+                <a href="genre-category.html?genre=Western">
+                    Western
+                </a>
+
+                <a href="genre-category.html?genre=Family">
+                    Family
+                </a>
+
+                <a href="genre-category.html?genre=Kids">
+                    Kids
+                </a>
 
             </div>
 
         </div>
 
-        <a href="artists.html">Artists</a>
 
-        <a href="about.html">About</a>
+        <a href="artists.html">
+            Artists
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
 
     </nav>
 
-    <div class="header-search">
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
 
         <input
-            type="text"
+            type="search"
             id="searchInput"
             placeholder="Search movies..."
+            autocomplete="off"
         >
+
+        <div
+            id="searchResults"
+            class="search-results"
+        >
+        </div>
 
     </div>
 
@@ -634,12 +831,18 @@
 
     <!-- HERO -->
 
-    <section class="hero" id="hero">
+    <section class="hero">
 
-        <div class="hero-content" id="heroContent">
+        <div
+            class="hero-content"
+            id="heroContent"
+        >
         </div>
 
-        <div class="hero-dots" id="heroDots">
+        <div
+            class="hero-dots"
+            id="heroDots"
+        >
         </div>
 
     </section>
@@ -656,6 +859,7 @@
         <div class="movie-slider-wrapper">
 
             <button
+                type="button"
                 class="slider-button slider-left"
                 onclick="slideRow('latestReviews', -1)"
             >
@@ -669,6 +873,7 @@
             </div>
 
             <button
+                type="button"
                 class="slider-button slider-right"
                 onclick="slideRow('latestReviews', 1)"
             >
@@ -742,14 +947,17 @@
 
 <script src="movies.js"></script>
 
-
 <script>
 
     /* ================= HERO ================= */
 
-    let heroMovies = movies.filter(movie => movie.reviewAvailable);
+    let heroMovies = movies.filter(function(movie) {
+        return movie.reviewAvailable === true;
+    });
 
     let heroIndex = 0;
+    let heroTimer = null;
+
 
     function showHero(index) {
 
@@ -761,7 +969,9 @@
 
         document.getElementById("heroContent").innerHTML = `
 
-            <h1>${movie.title}</h1>
+            <h1>
+                ${movie.title}
+            </h1>
 
             <div class="hero-meta">
                 ${movie.year} · ${movie.genres.join(" · ")}
@@ -776,30 +986,52 @@
             </p>
 
             <a
-                class="hero-button"
                 href="${movie.id}.html"
+                class="hero-button"
             >
                 Read Review
             </a>
 
         `;
 
+
         document.getElementById("heroDots").innerHTML =
-            heroMovies.map((_, i) => `
-                <span
-                    class="hero-dot ${i === index ? "active" : ""}"
-                    onclick="showHero(${i})"
-                ></span>
-            `).join("");
+            heroMovies.map(function(_, i) {
+
+                return `
+                    <span
+                        class="hero-dot ${i === index ? "active" : ""}"
+                        onclick="changeHero(${i})"
+                    ></span>
+                `;
+
+            }).join("");
 
     }
 
 
-    if (heroMovies.length) {
+    function changeHero(index) {
 
-        showHero(0);
+        heroIndex = index;
 
-        setInterval(() => {
+        showHero(heroIndex);
+
+        resetHeroTimer();
+
+    }
+
+
+    function resetHeroTimer() {
+
+        if (heroTimer) {
+            clearInterval(heroTimer);
+        }
+
+        if (heroMovies.length <= 1) {
+            return;
+        }
+
+        heroTimer = setInterval(function() {
 
             heroIndex++;
 
@@ -810,6 +1042,15 @@
             showHero(heroIndex);
 
         }, 6000);
+
+    }
+
+
+    if (heroMovies.length) {
+
+        showHero(0);
+
+        resetHeroTimer();
 
     }
 
@@ -830,7 +1071,7 @@
                     <img
                         src="${movie.poster}"
                         alt="${movie.title}"
-                        onerror="this.src='https://via.placeholder.com/300x450?text=Movie+Poster'"
+                        onerror="this.src='https://via.placeholder.com/400x600?text=Movie+Poster'"
                     >
 
                     <div class="poster-score">
@@ -857,7 +1098,10 @@
     /* ================= LATEST REVIEWS ================= */
 
     const reviewedMovies =
-        movies.filter(movie => movie.reviewAvailable);
+        movies.filter(function(movie) {
+            return movie.reviewAvailable === true;
+        });
+
 
     document.getElementById("latestReviews").innerHTML =
         reviewedMovies
@@ -869,8 +1113,13 @@
 
     const topMovies =
         [...movies]
-            .filter(movie => !movie.comingSoon)
-            .sort((a, b) => b.mrp - a.mrp);
+            .filter(function(movie) {
+                return movie.comingSoon !== true;
+            })
+            .sort(function(a, b) {
+                return b.mrp - a.mrp;
+            });
+
 
     document.getElementById("topMovies").innerHTML =
         topMovies
@@ -882,8 +1131,13 @@
 
     const latestMovies =
         [...movies]
-            .filter(movie => !movie.comingSoon)
-            .sort((a, b) => b.year - a.year);
+            .filter(function(movie) {
+                return movie.comingSoon !== true;
+            })
+            .sort(function(a, b) {
+                return b.year - a.year;
+            });
+
 
     document.getElementById("latestMovies").innerHTML =
         latestMovies
@@ -894,7 +1148,10 @@
     /* ================= COMING SOON ================= */
 
     const comingSoonMovies =
-        movies.filter(movie => movie.comingSoon);
+        movies.filter(function(movie) {
+            return movie.comingSoon === true;
+        });
+
 
     document.getElementById("comingSoon").innerHTML =
         comingSoonMovies
@@ -906,8 +1163,11 @@
 
     function slideRow(id, direction) {
 
-        const row =
-            document.getElementById(id);
+        const row = document.getElementById(id);
+
+        if (!row) {
+            return;
+        }
 
         row.scrollBy({
             left: direction * 600,
@@ -922,22 +1182,121 @@
     const searchInput =
         document.getElementById("searchInput");
 
-    searchInput.addEventListener("input", function () {
+    const searchResults =
+        document.getElementById("searchResults");
+
+
+    searchInput.addEventListener("input", function(event) {
 
         const searchTerm =
-            this.value.toLowerCase().trim();
+            event.target.value
+                .toLowerCase()
+                .trim();
+
+
+        if (!searchTerm) {
+
+            searchResults.innerHTML = "";
+
+            searchResults.style.display = "none";
+
+            return;
+
+        }
+
 
         const results =
-            reviewedMovies.filter(movie =>
-                movie.title
-                    .toLowerCase()
-                    .includes(searchTerm)
-            );
+            movies.filter(function(movie) {
 
-        document.getElementById("latestReviews").innerHTML =
-            results
-                .map(createMovieCard)
-                .join("");
+                return (
+                    movie.title
+                        .toLowerCase()
+                        .includes(searchTerm)
+
+                    ||
+
+                    movie.genres.some(function(genre) {
+
+                        return genre
+                            .toLowerCase()
+                            .includes(searchTerm);
+
+                    })
+
+                    ||
+
+                    movie.categories.some(function(category) {
+
+                        return category
+                            .toLowerCase()
+                            .includes(searchTerm);
+
+                    })
+                );
+
+            });
+
+
+        if (!results.length) {
+
+            searchResults.innerHTML = `
+
+                <div class="search-result">
+
+                    <div class="search-result-title">
+                        No movies found
+                    </div>
+
+                </div>
+
+            `;
+
+            searchResults.style.display = "block";
+
+            return;
+
+        }
+
+
+        searchResults.innerHTML =
+            results.map(function(movie) {
+
+                return `
+
+                    <a
+                        class="search-result"
+                        href="${movie.id}.html"
+                    >
+
+                        <div class="search-result-title">
+                            ${movie.title}
+                        </div>
+
+                        <div class="search-result-meta">
+                            ${movie.year} · MRP ${movie.mrp}
+                        </div>
+
+                    </a>
+
+                `;
+
+            }).join("");
+
+
+        searchResults.style.display = "block";
+
+    });
+
+
+    /* ================= CLOSE SEARCH ================= */
+
+    document.addEventListener("click", function(event) {
+
+        if (!event.target.closest(".search-box")) {
+
+            searchResults.style.display = "none";
+
+        }
 
     });
 
