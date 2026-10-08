@@ -1,749 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>About | Movie Reality</title>
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #080b18;
-    color: #ffffff;
-    line-height: 1.7;
-}
-
-/* HEADER */
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 72px;
-    background: rgba(8,11,24,0.94);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(110,231,255,0.15);
-    display: flex;
-    align-items: center;
-    padding: 0 5%;
-    z-index: 1000;
-}
-
-.logo {
-    font-size: 23px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.logo span {
-    color: #6ee7ff;
-}
-
-nav {
-    margin-left: auto;
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-nav a {
-    color: #c8d0df;
-    text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-nav a:hover,
-nav a.active {
-    color: #6ee7ff;
-}
-
-/* HERO */
-
-.about-hero {
-    min-height: 72vh;
-    margin-top: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 100px 20px 80px;
-    position: relative;
-    overflow: hidden;
-
-    background:
-        radial-gradient(circle at 50% 45%, rgba(22,131,216,0.22), transparent 45%),
-        linear-gradient(180deg, #0b1024 0%, #080b18 100%);
-}
-
-.about-hero::before {
-    content: "MR";
-    position: absolute;
-    font-size: 300px;
-    font-weight: 900;
-    color: rgba(110,231,255,0.025);
-    letter-spacing: -20px;
-    user-select: none;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-}
-
-.eyebrow {
-    color: #6ee7ff;
-    font-size: 13px;
-    letter-spacing: 4px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.about-hero h1 {
-    font-size: clamp(48px, 8vw, 92px);
-    line-height: 0.95;
-    margin-bottom: 28px;
-    letter-spacing: -3px;
-}
-
-.about-hero h1 span {
-    color: #6ee7ff;
-}
-
-.hero-tagline {
-    font-size: clamp(20px, 3vw, 30px);
-    color: #d9deea;
-    max-width: 700px;
-    margin: auto;
-}
-
-.hero-small {
-    margin-top: 25px;
-    color: #8791a6;
-    font-size: 14px;
-}
-
-/* GENERAL */
-
-.container {
-    width: min(1100px, 90%);
-    margin: auto;
-}
-
-section {
-    padding: 100px 0;
-}
-
-.section-label {
-    color: #6ee7ff;
-    font-size: 12px;
-    letter-spacing: 3px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-section h2 {
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.1;
-    margin-bottom: 25px;
-}
-
-section p {
-    color: #aeb7c8;
-    font-size: 17px;
-    max-width: 760px;
-}
-
-/* STORY */
-
-.story {
-    background: #0a0e1d;
-}
-
-.story-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 70px;
-    align-items: center;
-}
-
-.story-text p {
-    margin-bottom: 22px;
-}
-
-.big-quote {
-    border-left: 3px solid #6ee7ff;
-    padding: 25px 30px;
-    font-size: 25px;
-    line-height: 1.4;
-    color: #ffffff;
-    background: rgba(110,231,255,0.04);
-}
-
-/* TIME */
-
-.time-section {
-    text-align: center;
-}
-
-.time-section .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.time-section p {
-    margin-bottom: 45px;
-}
-
-.time-box {
-    width: min(850px, 100%);
-    padding: 45px;
-    border: 1px solid rgba(110,231,255,0.18);
-    border-radius: 18px;
-    background: linear-gradient(
-        135deg,
-        rgba(110,231,255,0.07),
-        rgba(22,131,216,0.04)
-    );
-}
-
-.time-number {
-    font-size: clamp(55px, 10vw, 100px);
-    font-weight: 900;
-    color: #6ee7ff;
-    line-height: 1;
-    margin-bottom: 15px;
-}
-
-.time-box h3 {
-    font-size: 25px;
-    margin-bottom: 12px;
-}
-
-/* WHAT WE DO */
-
-.what-section {
-    background: #0a0e1d;
-}
-
-.features {
-    margin-top: 45px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.feature {
-    padding: 32px;
-    border-radius: 16px;
-    background: #101527;
-    border: 1px solid rgba(255,255,255,0.06);
-    transition: 0.3s;
-}
-
-.feature:hover {
-    transform: translateY(-6px);
-    border-color: rgba(110,231,255,0.35);
-}
-
-.feature-number {
-    color: #6ee7ff;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-}
-
-.feature h3 {
-    font-size: 22px;
-    margin-bottom: 12px;
-}
-
-.feature p {
-    font-size: 15px;
-}
-
-/* TEAM */
-
-.team-section {
-    text-align: center;
-}
-
-.team-section .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.team-section p {
-    margin-bottom: 35px;
-}
-
-.team-card {
-    width: min(600px, 100%);
-    padding: 55px 30px;
-    border-radius: 20px;
-    background:
-        radial-gradient(circle at center, rgba(22,131,216,0.18), transparent 60%),
-        #0d1222;
-    border: 1px solid rgba(110,231,255,0.2);
-}
-
-.team-card .number {
-    font-size: 110px;
-    font-weight: 900;
-    color: #ffffff;
-    line-height: 1;
-}
-
-.team-card h3 {
-    font-size: 30px;
-    margin: 15px 0;
-}
-
-.team-card .joke {
-    color: #6ee7ff;
-    font-size: 16px;
-}
-
-/* MRP */
-
-.mrp-section {
-    padding: 120px 0;
-    text-align: center;
-    background:
-        radial-gradient(circle at center, rgba(22,131,216,0.18), transparent 55%),
-        #080b18;
-}
-
-.mrp-section .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.mrp-logo {
-    font-size: clamp(65px, 12vw, 120px);
-    font-weight: 900;
-    letter-spacing: -8px;
-    color: #6ee7ff;
-    line-height: 1;
-    margin-bottom: 25px;
-}
-
-.mrp-section h2 {
-    max-width: 800px;
-}
-
-.mrp-section p {
-    max-width: 650px;
-    margin-bottom: 35px;
-}
-
-.mrp-question {
-    font-size: clamp(24px, 4vw, 38px);
-    font-weight: bold;
-    color: #ffffff;
-}
-
-/* CLOSING */
-
-.closing {
-    padding: 120px 20px;
-    text-align: center;
-    background: #0a0e1d;
-}
-
-.closing h2 {
-    font-size: clamp(35px, 6vw, 65px);
-    margin-bottom: 20px;
-}
-
-.closing p {
-    margin: 0 auto 35px;
-}
-
-.button {
-    display: inline-block;
-    padding: 14px 28px;
-    background: #1683d8;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.button:hover {
-    background: #1b9bef;
-    transform: translateY(-2px);
-}
-
-/* FOOTER */
-
-footer {
-    padding: 35px 20px;
-    text-align: center;
-    background: #060914;
-    color: #667085;
-    font-size: 13px;
-}
-
-/* MOBILE */
-
-@media (max-width: 800px) {
-
-    header {
-        padding: 0 20px;
-    }
-
-    nav {
-        gap: 14px;
-    }
-
-    nav a {
-        font-size: 12px;
-    }
-
-    .story-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .features {
-        grid-template-columns: 1fr;
-    }
-
-    section {
-        padding: 75px 0;
-    }
-
-    .about-hero {
-        min-height: 65vh;
-    }
-
-    .time-box {
-        padding: 35px 20px;
-    }
-}
-
-@media (max-width: 550px) {
-
-    .logo {
-        font-size: 18px;
-    }
-
-    nav {
-        gap: 10px;
-    }
-
-    nav a:nth-child(3),
-    nav a:nth-child(4) {
-        display: none;
-    }
-
-    .about-hero h1 {
-        letter-spacing: -2px;
-    }
-}
-</style>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>About - Movie Reality</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #080b18;
+
+            color: #ffffff;
+
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 70px;
+
+            background: #080b18;
+
+            border-bottom:
+                1px solid rgba(110,231,255,0.15);
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 40px;
+
+            z-index: 100;
+        }
+
+        .logo {
+            color: #6ee7ff;
+
+            font-size: 24px;
+
+            font-weight: bold;
+        }
+
+        .home {
+            margin-left: auto;
+
+            color: #6ee7ff;
+        }
+
+        main {
+            padding-top: 70px;
+        }
+
+        .hero {
+            min-height: 430px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 60px 25px;
+
+            background:
+                linear-gradient(
+                    rgba(8,11,24,0.7),
+                    #080b18
+                );
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+
+            color: #6ee7ff;
+
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 21px;
+
+            color: #d2d7e2;
+        }
+
+        section {
+            max-width: 1000px;
+
+            margin: auto;
+
+            padding: 65px 25px;
+        }
+
+        h2 {
+            color: #6ee7ff;
+
+            font-size: 30px;
+
+            margin-bottom: 18px;
+        }
+
+        p {
+            color: #b8bfce;
+
+            margin-bottom: 18px;
+
+            font-size: 17px;
+        }
+
+        .highlight {
+            border-left:
+                3px solid #6ee7ff;
+
+            padding-left: 20px;
+
+            margin-top: 25px;
+        }
+
+        .mrp {
+            text-align: center;
+
+            background: #101426;
+
+            border:
+                1px solid rgba(110,231,255,0.15);
+
+            border-radius: 12px;
+
+            padding: 45px 25px;
+
+            margin-top: 25px;
+        }
+
+        .mrp-number {
+            font-size: 55px;
+
+            font-weight: bold;
+
+            color: #6ee7ff;
+
+            margin: 15px 0;
+        }
+
+        .team {
+            text-align: center;
+
+            margin-top: 30px;
+
+            padding: 30px;
+
+            background: #101426;
+
+            border-radius: 10px;
+        }
+
+        footer {
+            border-top:
+                1px solid rgba(110,231,255,0.15);
+
+            padding: 30px;
+
+            text-align: center;
+
+            color: #737b8e;
+        }
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            h2 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
 
-<a href="index.html" class="logo">
-MOVIE <span>REALITY</span>
-</a>
+    <a
+        href="index.html"
+        class="logo"
+    >
+        MOVIE REALITY
+    </a>
 
-<nav>
-<a href="index.html">Home</a>
-<a href="index.html#movies">Movies</a>
-<a href="index.html#genre">Genre</a>
-<a href="index.html#artists">Artists</a>
-<a href="about.html" class="active">About</a>
-</nav>
+    <a
+        href="index.html"
+        class="home"
+    >
+        ← Home
+    </a>
 
 </header>
 
 
-<!-- HERO -->
+<main>
 
-<section class="about-hero">
+    <div class="hero">
 
-<div class="hero-content">
+        <div class="hero-content">
 
-<div class="eyebrow">THE STORY BEHIND THE SCREEN</div>
+            <h1>
+                WELCOME TO MOVIE REALITY
+            </h1>
 
-<h1>
-WELCOME TO<br>
-<span>MOVIE REALITY</span>
-</h1>
+            <p>
+                Because 2 hours is a long time to find out
+                you picked the wrong movie.
+            </p>
 
-<div class="hero-tagline">
-Because 2 hours is a long time to find out you picked the wrong movie.
-</div>
+        </div>
 
-<div class="hero-small">
-No spoilers. No unnecessary drama. Just the reality of the movie.
-</div>
+    </div>
 
-</div>
 
-</section>
+    <section>
 
+        <h2>
+            Why Movie Reality?
+        </h2>
 
-<!-- STORY -->
+        <p>
+            Your time is valuable.
+        </p>
 
-<section class="story">
+        <p>
+            There are thousands of movies out there,
+            and sometimes choosing what to watch takes
+            almost as long as watching the movie itself.
+        </p>
 
-<div class="container story-grid">
+        <div class="highlight">
 
-<div class="story-text">
+            <p>
+                Movie Reality exists to answer one simple
+                question:
+            </p>
 
-<div class="section-label">WHY THIS EXISTS</div>
+            <p>
+                <strong>
+                    Is this movie worth your time or a waste of it?
+                </strong>
+            </p>
 
-<h2>
-I LOVE MOVIES.<br>
-I JUST HATE WASTING TIME.
-</h2>
+        </div>
 
-<p>
-Hi everyone. Thank you for visiting Movie Reality.
-</p>
+    </section>
 
-<p>
-I am a huge movie fan. I love discovering new movies, getting lost in different stories and finding those films that make you think, laugh or just have a genuinely good time.
-</p>
 
-<p>
-But there is one problem.
-</p>
+    <section>
 
-<p>
-Sometimes you spend two or three hours watching a movie and when the credits roll, you are just sitting there thinking...
-</p>
+        <h2>
+            What We Do
+        </h2>
 
-</div>
+        <p>
+            We give you quick, spoiler-light movie reviews
+            designed to help you decide what to watch.
+        </p>
 
-<div class="big-quote">
-"Did I really just spend my evening watching that?"
-</div>
+        <p>
+            No unnecessary information.
+            No complicated movie analysis.
+            Just the things that actually help you decide.
+        </p>
 
-</div>
+    </section>
 
-</section>
 
+    <section>
 
-<!-- TIME -->
+        <h2>
+            The MRP
+        </h2>
 
-<section class="time-section">
+        <div class="mrp">
 
-<div class="container">
+            <p>
+                Every reviewed movie gets a
+            </p>
 
-<div class="section-label">THE PROBLEM</div>
+            <div class="mrp-number">
+                MRP
+            </div>
 
-<h2>
-YOUR TIME IS VALUABLE.
-</h2>
+            <p>
+                Movie Reality Pick score.
+            </p>
 
-<p>
-There are thousands of movies out there. You cannot watch all of them.
-So why waste your time finding out the hard way?
-</p>
+            <p>
+                A simple score that tells you how strongly
+                we recommend spending your time on it.
+            </p>
 
-<div class="time-box">
+        </div>
 
-<div class="time-number">2–3 HRS</div>
+    </section>
 
-<h3>
-That's a lot of time for a bad decision.
-</h3>
 
-<p>
-Movie Reality exists to help you make that decision before you press play.
-</p>
+    <section>
 
-</div>
+        <h2>
+            The Team
+        </h2>
 
-</div>
+        <div class="team">
 
-</section>
+            <p>
+                A huge team of movie experts...
+            </p>
 
+            <p>
+                <strong>
+                    Just kidding. Team size: 1.
+                </strong>
+            </p>
 
-<!-- WHAT WE DO -->
+            <p>
+                One person, way too many movies,
+                and a strong dislike for wasting two
+                or three hours on the wrong one.
+            </p>
 
-<section class="what-section">
+        </div>
 
-<div class="container">
+    </section>
 
-<div class="section-label">WHAT WE DO</div>
 
-<h2>
-WE WATCH.<br>
-WE REVIEW.<br>
-YOU DECIDE.
-</h2>
+    <section>
 
-<div class="features">
+        <h2>
+            So... What Should You Watch?
+        </h2>
 
-<div class="feature">
+        <p>
+            That is exactly what Movie Reality is here for.
+        </p>
 
-<div class="feature-number">01</div>
+        <p>
+            Find something interesting, check the MRP,
+            and decide whether it deserves your time.
+        </p>
 
-<h3>NO SPOILERS</h3>
+    </section>
 
-<p>
-We keep the important story details out. You should experience the movie yourself.
-</p>
+</main>
 
-</div>
-
-
-<div class="feature">
-
-<div class="feature-number">02</div>
-
-<h3>REAL TALK</h3>
-
-<p>
-No complicated film-school vocabulary. Just a straightforward take on what the movie feels like to watch.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-number">03</div>
-
-<h3>UNDER 10 MINUTES</h3>
-
-<p>
-Because the review should not take almost as long as the movie itself.
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- TEAM -->
-
-<section class="team-section">
-
-<div class="container">
-
-<div class="section-label">THE TEAM</div>
-
-<h2>
-BEHIND THE SCENES
-</h2>
-
-<p>
-Behind Movie Reality is a very large and highly experienced team.
-</p>
-
-<div class="team-card">
-
-<div class="number">1</div>
-
-<h3>
-Yep. Just One Person.
-</h3>
-
-<div class="joke">
-Huge team. Very efficient meetings.
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- MRP -->
-
-<section class="mrp-section">
-
-<div class="container">
-
-<div class="mrp-logo">MRP</div>
-
-<h2>
-THE MOVIE REALITY QUESTION
-</h2>
-
-<p>
-Every review eventually comes down to one simple thing.
-</p>
-
-<div class="mrp-question">
-"Is it worth your time or a waste of it?"
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CLOSING -->
-
-<section class="closing">
-
-<div class="container">
-
-<div class="section-label">WELCOME TO THE COMMUNITY</div>
-
-<h2>
-FIND A MOVIE.<br>
-CHECK THE REALITY.
-</h2>
-
-<p>
-For people who love movies.<br>
-For people who value their time.<br>
-For people who just want to know what they are getting into.
-</p>
-
-<a href="index.html" class="button">
-EXPLORE MOVIES
-</a>
-
-</div>
-
-</section>
-
-
-<!-- FOOTER -->
 
 <footer>
 
-© 2026 Movie Reality. All rights reserved.
+    © 2026 Movie Reality — Worth your time or a waste of it?
 
 </footer>
 
