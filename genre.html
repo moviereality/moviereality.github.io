@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Genres - Movie Reality</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #080b18;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            height: 70px;
+
+            background: #080b18;
+
+            border-bottom:
+                1px solid rgba(110,231,255,0.15);
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 50px;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #6ee7ff;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            margin-left: 50px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #6ee7ff;
+        }
+
+        .search {
+            margin-left: auto;
+        }
+
+        .search input {
+            width: 220px;
+
+            padding: 10px 15px;
+
+            background: #10152a;
+
+            border:
+                1px solid rgba(110,231,255,0.25);
+
+            border-radius: 20px;
+
+            color: white;
+
+            outline: none;
+        }
+
+        main {
+            padding: 130px 50px 80px;
+        }
+
+        .page-title {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-title span {
+            color: #6ee7ff;
+        }
+
+        .page-description {
+            color: #9da5bb;
+            margin-bottom: 45px;
+            line-height: 1.6;
+        }
+
+        .genre-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 15px;
+        }
+
+        .genre-card {
+            padding: 22px;
+
+            background: #10152a;
+
+            border:
+                1px solid rgba(110,231,255,0.12);
+
+            border-radius: 9px;
+
+            color: white;
+
+            text-decoration: none;
+
+            transition: 0.3s;
+        }
+
+        .genre-card:hover {
+            border-color: #6ee7ff;
+            transform: translateY(-4px);
+        }
+
+        .genre-card h2 {
+            font-size: 18px;
+        }
+
+        footer {
+            border-top:
+                1px solid rgba(110,231,255,0.12);
+
+            padding: 35px;
+
+            text-align: center;
+
+            color: #777f96;
+        }
+
+        @media(max-width:900px) {
+
+            .genre-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+        @media(max-width:700px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .genre-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            main {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        MOVIE <span>REALITY</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="genre.html">Genre</a>
+        <a href="artists.html">Artists</a>
+        <a href="about.html">About</a>
+
+    </nav>
+
+    <div class="search">
+
+        <input
+            type="text"
+            placeholder="Search movies..."
+        >
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <h1 class="page-title">
+        Movie <span>Genres</span>
+    </h1>
+
+    <p class="page-description">
+        Pick a genre and discover movies that match your mood.
+    </p>
+
+
+    <div class="genre-grid">
+
+        <a class="genre-card" href="genre-category.html?genre=Action">
+            <h2>Action</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Adventure">
+            <h2>Adventure</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Comedy">
+            <h2>Comedy</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Drama">
+            <h2>Drama</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Thriller">
+            <h2>Thriller</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Sci-Fi">
+            <h2>Sci-Fi</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Fantasy">
+            <h2>Fantasy</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Crime">
+            <h2>Crime</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Romance">
+            <h2>Romance</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Horror">
+            <h2>Horror</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Animation">
+            <h2>Animation</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Documentary">
+            <h2>Documentary</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Biography">
+            <h2>Biography</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=War">
+            <h2>War</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Sports">
+            <h2>Sports</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Musical">
+            <h2>Musical</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Western">
+            <h2>Western</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Family">
+            <h2>Family</h2>
+        </a>
+
+        <a class="genre-card" href="genre-category.html?genre=Kids">
+            <h2>Kids</h2>
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 Movie Reality
+
+</footer>
+
+</body>
+
+</html>
