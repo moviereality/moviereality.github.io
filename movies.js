@@ -1,95 +1,100 @@
 const movies = [
-  {
-    id: "project-hail-mary",
-    title: "Project Hail Mary",
-    year: 2026,
-    poster: "project-hail-mary.jpg",
-    mrp: 9.5,
 
-    genres: [
-      "Sci-Fi",
-      "Adventure"
-    ],
+    {
+        id: "project-hail-mary",
+        title: "Project Hail Mary",
+        year: 2026,
+        poster: "project-hail-mary.jpg",
+        mrp: 9.5,
 
-    categories: [
-      "Highly Rated",
-      "Adventure",
-      "Space"
-    ],
+        genres: [
+            "Sci-Fi",
+            "Adventure"
+        ],
 
-    synopsis: "A spoiler-free short description of the movie goes here.",
+        categories: [
+            "Highly Rated",
+            "Adventure",
+            "Space"
+        ],
 
-    reviewAvailable: true,
-    reviewVideo: "YOUR_YOUTUBE_VIDEO_ID",
+        synopsis:
+            "A thrilling space adventure with mystery, science, friendship and a whole lot of unexpected moments.",
 
-    mainPeople: [
-      {
-        name: "Ryan Gosling",
-        profession: "Actor",
-        image: "ryan-gosling.jpg"
-      }
-    ],
+        reviewAvailable: true,
 
-    similarMovies: [
-      "movie-2",
-      "movie-3"
-    ]
-  },
+        reviewVideo:
+            "YOUR_YOUTUBE_VIDEO_ID",
 
-  {
-    id: "movie-2",
-    title: "Movie 2",
-    year: 2025,
-    poster: "movie-2.jpg",
-    mrp: 8.2,
+        mainPeople: [],
 
-    genres: [
-      "Action",
-      "Thriller"
-    ],
+        similarMovies: [
+            "movie-2",
+            "movie-3"
+        ]
+    },
 
-    categories: [
-      "Popular Movies",
-      "Action"
-    ],
 
-    synopsis: "Short spoiler-free description.",
+    {
+        id: "movie-2",
+        title: "Movie 2",
+        year: 2025,
+        poster: "movie-2.jpg",
+        mrp: 8.2,
 
-    reviewAvailable: false,
-    reviewVideo: "",
+        genres: [
+            "Action",
+            "Thriller"
+        ],
 
-    mainPeople: [],
+        categories: [
+            "Popular Movies",
+            "Action"
+        ],
 
-    similarMovies: [
-      "project-hail-mary"
-    ]
-  },
+        synopsis:
+            "Short spoiler-free description for Movie 2.",
 
-  {
-    id: "movie-3",
-    title: "Movie 3",
-    year: 2025,
-    poster: "movie-3.jpg",
-    mrp: 7.8,
+        reviewAvailable: false,
 
-    genres: [
-      "Comedy"
-    ],
+        reviewVideo: "",
 
-    categories: [
-      "Funny & Fun",
-      "Feel Good"
-    ],
+        mainPeople: [],
 
-    synopsis: "Short spoiler-free description.",
+        similarMovies: [
+            "project-hail-mary"
+        ]
+    },
 
-    reviewAvailable: false,
-    reviewVideo: "",
 
-    mainPeople: [],
+    {
+        id: "movie-3",
+        title: "Movie 3",
+        year: 2025,
+        poster: "movie-3.jpg",
+        mrp: 7.8,
 
-    similarMovies: [
-      "project-hail-mary"
-    ]
-  }
+        genres: [
+            "Comedy"
+        ],
+
+        categories: [
+            "Funny & Fun",
+            "Feel Good"
+        ],
+
+        synopsis:
+            "Short spoiler-free description for Movie 3.",
+
+        reviewAvailable: false,
+
+        reviewVideo: "",
+
+        mainPeople: [],
+
+        similarMovies: [
+            "project-hail-mary"
+        ]
+    }
+
 ];
