@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +7,6 @@
     <title>Movie Reality</title>
 
     <style>
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -16,390 +14,272 @@
         }
 
         body {
+            font-family: Arial, Helvetica, sans-serif;
             background: #080b18;
             color: white;
-            font-family: Arial, sans-serif;
-            overflow-x: hidden;
         }
 
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ================= HEADER ================= */
+
         header {
-            height: 70px;
-            background: #080b18;
-            border-bottom: 1px solid rgba(110, 231, 255, 0.15);
-
-            display: flex;
-            align-items: center;
-
-            padding: 0 50px;
-
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-
+            width: 100%;
+            height: 70px;
+            background: #080b18;
+            border-bottom: 1px solid rgba(110, 231, 255, 0.15);
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
             z-index: 1000;
         }
 
         .logo {
-            font-size: 22px;
+            color: #6ee7ff;
+            font-size: 24px;
             font-weight: bold;
             letter-spacing: 1px;
             white-space: nowrap;
         }
 
-        .logo span {
+        nav {
+            display: flex;
+            align-items: center;
+            margin-left: 45px;
+            gap: 28px;
+            height: 100%;
+        }
+
+        nav > a,
+        .nav-dropdown > .nav-title {
+            color: #ffffff;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+
+        nav > a:hover,
+        .nav-dropdown > .nav-title:hover {
             color: #6ee7ff;
         }
 
-        nav {
+        /* Dropdown parent */
+
+        .nav-dropdown {
+            position: relative;
+            height: 100%;
             display: flex;
-            gap: 28px;
-            margin-left: 50px;
             align-items: center;
         }
 
-        nav a,
-        .drop-button {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-            background: none;
-            border: none;
-            cursor: pointer;
+        /* IMPORTANT:
+           No arrow here.
+        */
+
+        .nav-title {
+            display: flex;
+            align-items: center;
+            height: 100%;
         }
 
-        nav a:hover,
-        .drop-button:hover {
-            color: #6ee7ff;
-        }
-
-        .dropdown {
-            position: relative;
-        }
+        /* Dropdown */
 
         .dropdown-menu {
             position: absolute;
-            top: 35px;
-            left: 0;
+            top: 69px;
+            left: 50%;
+            transform: translateX(-50%);
 
-            background: #10152a;
-            border: 1px solid rgba(110, 231, 255, 0.2);
-
+            background: #000000;
+            border: 1px solid rgba(110, 231, 255, 0.25);
             border-radius: 8px;
 
             padding: 20px;
 
-            display: none;
+            min-width: 700px;
+            max-width: 90vw;
 
-            min-width: 600px;
-
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-        }
-
-        .dropdown:hover .dropdown-menu {
             display: grid;
-        }
-
-        .movies-menu {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px 30px;
-        }
-
-        .genre-menu {
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(4, minmax(150px, 1fr));
             gap: 8px 25px;
 
-            min-width: 850px;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition: opacity 0.15s ease;
+        }
+
+        /*
+           Invisible bridge prevents the dropdown disappearing
+           when moving the mouse from the title to the dropdown.
+        */
+
+        .dropdown-menu::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 0;
+            right: 0;
+            height: 15px;
+            background: transparent;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
         }
 
         .dropdown-menu a {
             display: block;
-            padding: 5px 0;
-            color: #c5cadb;
-            white-space: nowrap;
+            padding: 8px 10px;
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: 0.2s;
         }
 
         .dropdown-menu a:hover {
+            background: #111827;
             color: #6ee7ff;
         }
 
-        .search {
+        /* Search */
+
+        .header-search {
             margin-left: auto;
+            position: relative;
         }
 
-        .search input {
+        .header-search input {
             width: 220px;
-            padding: 10px 15px;
-
-            background: #10152a;
+            height: 38px;
+            padding: 0 15px;
             border: 1px solid rgba(110, 231, 255, 0.25);
-
             border-radius: 20px;
-
-            color: white;
             outline: none;
+            background: #101426;
+            color: white;
         }
 
-        .search input::placeholder {
-            color: #8b91a8;
+        .header-search input::placeholder {
+            color: #8b93a7;
         }
 
-        /* HERO */
+        /* ================= MAIN ================= */
+
+        main {
+            padding-top: 70px;
+        }
+
+        section {
+            padding: 45px 40px;
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 25px;
+            margin-bottom: 25px;
+        }
+
+        /* ================= HERO ================= */
 
         .hero {
-            height: 650px;
-            margin-top: 70px;
             position: relative;
+            min-height: 470px;
             overflow: hidden;
-        }
-
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-
-            background-size: cover;
-            background-position: center;
-
-            opacity: 0;
-
-            transition: opacity 0.8s ease;
-        }
-
-        .hero-slide::before {
-            content: "";
-
-            position: absolute;
-            inset: 0;
-
+            display: flex;
+            align-items: center;
+            padding: 60px;
             background:
-                linear-gradient(
-                    90deg,
-                    rgba(8, 11, 24, 0.98) 0%,
-                    rgba(8, 11, 24, 0.75) 40%,
-                    rgba(8, 11, 24, 0.25) 100%
-                );
-        }
-
-        .hero-slide.active {
-            opacity: 1;
+                linear-gradient(90deg, #080b18 15%, rgba(8,11,24,0.85) 45%, rgba(8,11,24,0.2)),
+                #111827;
         }
 
         .hero-content {
-            position: relative;
-            height: 100%;
-
-            display: flex;
-            align-items: center;
-
-            padding: 0 8%;
-        }
-
-        .hero-text {
             max-width: 600px;
+            position: relative;
+            z-index: 2;
         }
 
-        .hero-label {
-            color: #6ee7ff;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 2px;
+        .hero-content h1 {
+            font-size: 48px;
             margin-bottom: 15px;
         }
 
-        .hero h1 {
-            font-size: 58px;
-            line-height: 1.05;
-            margin-bottom: 20px;
+        .hero-meta {
+            color: #b9c0d0;
+            margin-bottom: 18px;
         }
 
-        .hero-description {
-            color: #c5cadb;
-            font-size: 17px;
+        .hero-score {
+            display: inline-block;
+            background: #1683d8;
+            padding: 7px 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .hero-content p {
+            color: #c9cfdd;
             line-height: 1.6;
             margin-bottom: 25px;
         }
 
-        .rating {
-            font-size: 16px;
-            margin-bottom: 25px;
-        }
-
-        .rating span {
-            color: #6ee7ff;
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        .read-more {
+        .hero-button {
             display: inline-block;
-
             background: #1683d8;
-            color: white;
-
-            text-decoration: none;
-
-            padding: 12px 22px;
-
+            padding: 11px 20px;
             border-radius: 5px;
-
             font-weight: bold;
         }
 
-        /* DOTS */
+        .hero-button:hover {
+            background: #1b9cf5;
+        }
 
         .hero-dots {
             position: absolute;
-
-            bottom: 30px;
+            bottom: 20px;
             left: 50%;
-
             transform: translateX(-50%);
-
             display: flex;
             gap: 8px;
-
-            z-index: 10;
+            z-index: 5;
         }
 
         .hero-dot {
-            width: 8px;
-            height: 8px;
-
+            width: 9px;
+            height: 9px;
             border-radius: 50%;
-
-            background: #667085;
-
+            background: #555;
             cursor: pointer;
         }
 
         .hero-dot.active {
             background: #6ee7ff;
-            transform: scale(1.3);
         }
 
-        /* SECTIONS */
+        /* ================= MOVIE ROW ================= */
 
-        section {
-            padding: 55px 50px 0;
-        }
-
-        .section-title {
-            font-size: 28px;
-            margin-bottom: 25px;
-        }
-
-        .section-title span {
-            color: #6ee7ff;
-        }
-
-        /* REVIEW SLIDER */
-
-        .review-wrapper {
+        .movie-slider-wrapper {
             position: relative;
         }
 
-        .review-slider {
-            display: flex;
-            gap: 20px;
-
-            overflow-x: auto;
-
-            scroll-behavior: smooth;
-
-            scrollbar-width: none;
-        }
-
-        .review-slider::-webkit-scrollbar {
-            display: none;
-        }
-
-        .movie-card {
-            flex: 0 0 220px;
-
-            text-decoration: none;
-            color: white;
-        }
-
-        .movie-card img {
-            width: 220px;
-            height: 320px;
-
-            object-fit: cover;
-
-            border-radius: 8px;
-
-            display: block;
-
-            transition: 0.3s;
-        }
-
-        .movie-card:hover img {
-            transform: scale(1.03);
-        }
-
-        .movie-info {
-            padding-top: 12px;
-        }
-
-        .movie-info h3 {
-            font-size: 16px;
-
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .movie-info p {
-            color: #6ee7ff;
-            font-size: 14px;
-            margin-top: 6px;
-        }
-
-        .slider-arrow {
-            position: absolute;
-
-            top: 45%;
-
-            transform: translateY(-50%);
-
-            width: 42px;
-            height: 42px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background: rgba(8, 11, 24, 0.85);
-
-            color: white;
-
-            font-size: 28px;
-
-            cursor: pointer;
-
-            z-index: 5;
-        }
-
-        .slider-arrow:hover {
-            background: #1683d8;
-        }
-
-        .slider-arrow.left {
-            left: -20px;
-        }
-
-        .slider-arrow.right {
-            right: -20px;
-        }
-
-        /* MOVIE ROW */
-
         .movie-row {
             display: flex;
-            gap: 20px;
-
+            gap: 18px;
             overflow-x: auto;
-
+            scroll-behavior: smooth;
             scrollbar-width: none;
         }
 
@@ -407,40 +287,99 @@
             display: none;
         }
 
-        .small-card {
-            flex: 0 0 170px;
+        .movie-card {
+            flex: 0 0 180px;
+            cursor: pointer;
         }
 
-        .small-card img {
-            width: 170px;
-            height: 250px;
-
-            object-fit: cover;
-
+        .poster-wrap {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            overflow: hidden;
             border-radius: 7px;
+            background: #121728;
+        }
 
+        .poster-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
-
-            transition: 0.3s;
         }
 
-        .small-card img:hover {
-            transform: scale(1.04);
+        .poster-score {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            background: rgba(0,0,0,0.8);
+            color: #6ee7ff;
+            padding: 5px 7px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            opacity: 0;
+            transition: 0.2s;
         }
+
+        .movie-card:hover .poster-score {
+            opacity: 1;
+        }
+
+        .movie-card h3 {
+            margin-top: 9px;
+            font-size: 15px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .movie-year {
+            margin-top: 5px;
+            color: #8d95a8;
+            font-size: 13px;
+        }
+
+        /* Slider arrows */
+
+        .slider-button {
+            position: absolute;
+            top: 42%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            z-index: 5;
+        }
+
+        .slider-button:hover {
+            background: #1683d8;
+        }
+
+        .slider-left {
+            left: -15px;
+        }
+
+        .slider-right {
+            right: -15px;
+        }
+
+        /* ================= FOOTER ================= */
 
         footer {
-            margin-top: 80px;
-
-            padding: 35px 50px;
-
-            border-top: 1px solid rgba(110, 231, 255, 0.12);
-
+            border-top: 1px solid rgba(110, 231, 255, 0.15);
+            padding: 30px 40px;
             text-align: center;
-
-            color: #777f96;
-
-            font-size: 14px;
+            color: #737b8e;
+            margin-top: 30px;
         }
+
+        /* ================= MOBILE ================= */
 
         @media (max-width: 900px) {
 
@@ -449,171 +388,224 @@
             }
 
             nav {
-                gap: 15px;
                 margin-left: 25px;
+                gap: 15px;
             }
 
-            .dropdown-menu {
-                min-width: 450px;
-            }
-
-            .genre-menu {
-                min-width: 600px;
-            }
-
-            .search input {
-                width: 170px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-        }
-
-        @media (max-width: 700px) {
-
-            nav {
+            .header-search {
                 display: none;
             }
 
-            .search input {
-                width: 150px;
-            }
-
-            .hero {
-                height: 550px;
-            }
-
-            .hero h1 {
-                font-size: 38px;
+            .dropdown-menu {
+                min-width: 600px;
+                grid-template-columns: repeat(3, minmax(140px, 1fr));
             }
 
             section {
-                padding-left: 20px;
-                padding-right: 20px;
+                padding: 35px 20px;
             }
 
+            .hero {
+                padding: 40px 25px;
+            }
+
+            .hero-content h1 {
+                font-size: 38px;
+            }
         }
 
-    </style>
+        @media (max-width: 650px) {
 
+            header {
+                height: auto;
+                min-height: 65px;
+                flex-wrap: wrap;
+                padding: 12px 15px;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+                margin: 10px 0 0;
+                padding-bottom: 5px;
+            }
+
+            nav > a,
+            .nav-dropdown > .nav-title {
+                font-size: 13px;
+            }
+
+            .dropdown-menu {
+                position: fixed;
+                top: 105px;
+                left: 10px;
+                right: 10px;
+                transform: none;
+                min-width: auto;
+                width: calc(100% - 20px);
+                max-height: 70vh;
+                overflow-y: auto;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            main {
+                padding-top: 110px;
+            }
+
+            .hero {
+                min-height: 430px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .movie-card {
+                flex: 0 0 145px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <header>
 
-    <div class="logo">
-        MOVIE <span>REALITY</span>
-    </div>
+    <a href="index.html" class="logo">
+        MOVIE REALITY
+    </a>
 
     <nav>
 
         <a href="index.html">Home</a>
 
-        <div class="dropdown">
+        <div class="nav-dropdown">
 
-            <button class="drop-button">
-                Movies ▼
-            </button>
+            <span class="nav-title">Movies</span>
 
-            <div class="dropdown-menu movies-menu">
+            <div class="dropdown-menu">
 
-                <a href="category.html?category=Popular%20Movies">Popular Movies</a>
-                <a href="category.html?category=Trending%20Now">Trending Now</a>
-                <a href="category.html?category=Highly%20Rated">Highly Rated</a>
+                <a href="movies.html">All Movies</a>
 
-                <a href="category.html?category=New%20Releases">New Releases</a>
-                <a href="category.html?category=Coming%20Soon">Coming Soon</a>
-                <a href="category.html?category=Feel%20Good">Feel Good</a>
+                <a href="category.html?category=Popular%20Movies">
+                    Popular Movies
+                </a>
 
-                <a href="category.html?category=Funny%20%26%20Fun">Funny & Fun</a>
-                <a href="category.html?category=Inspirational">Inspirational</a>
-                <a href="category.html?category=Emotional">Emotional</a>
+                <a href="category.html?category=Trending%20Now">
+                    Trending Now
+                </a>
 
-                <a href="category.html?category=Relaxing">Relaxing</a>
-                <a href="category.html?category=Kids">Kids</a>
-                <a href="category.html?category=Family">Family</a>
+                <a href="category.html?category=Highly%20Rated">
+                    Highly Rated
+                </a>
 
-                <a href="category.html?category=Teen">Teen</a>
-                <a href="category.html?category=Young%20Adults">Young Adults</a>
-                <a href="category.html?category=Spy">Spy</a>
+                <a href="category.html?category=New%20Releases">
+                    New Releases
+                </a>
 
-                <a href="category.html?category=Superhero">Superhero</a>
-                <a href="category.html?category=Heist">Heist</a>
-                <a href="category.html?category=Survival">Survival</a>
+                <a href="category.html?category=Feel%20Good">
+                    Feel Good
+                </a>
 
-                <a href="category.html?category=Road%20Trip">Road Trip</a>
-                <a href="category.html?category=Hidden%20Gems">Hidden Gems</a>
-                <a href="category.html?category=One-Time%20Watch">One-Time Watch</a>
+                <a href="category.html?category=Funny%20%26%20Fun">
+                    Funny & Fun
+                </a>
 
-                <a href="category.html?category=Short%20%26%20Easy%20Watch">Short & Easy Watch</a>
+                <a href="category.html?category=Inspirational">
+                    Inspirational
+                </a>
+
+                <a href="category.html?category=Emotional">
+                    Emotional
+                </a>
+
+                <a href="category.html?category=Relaxing">
+                    Relaxing
+                </a>
+
+                <a href="category.html?category=Kids">
+                    Kids
+                </a>
+
+                <a href="category.html?category=Family">
+                    Family
+                </a>
+
+                <a href="category.html?category=Teen">
+                    Teen
+                </a>
+
+                <a href="category.html?category=Young%20Adults">
+                    Young Adults
+                </a>
+
+                <a href="category.html?category=Spy">
+                    Spy
+                </a>
+
+                <a href="category.html?category=Superhero">
+                    Superhero
+                </a>
+
+                <a href="category.html?category=Heist">
+                    Heist
+                </a>
+
+                <a href="category.html?category=Survival">
+                    Survival
+                </a>
+
+                <a href="category.html?category=Road%20Trip">
+                    Road Trip
+                </a>
+
+                <a href="category.html?category=Hidden%20Gems">
+                    Hidden Gems
+                </a>
+
+                <a href="category.html?category=One-Time%20Watch">
+                    One-Time Watch
+                </a>
+
+                <a href="category.html?category=Short%20%26%20Easy%20Watch">
+                    Short & Easy Watch
+                </a>
 
             </div>
 
         </div>
 
+        <div class="nav-dropdown">
 
-        <div class="dropdown">
+            <span class="nav-title">Genre</span>
 
-            <button class="drop-button">
-                Genre ▼
-            </button>
-
-            <div class="dropdown-menu genre-menu">
+            <div class="dropdown-menu">
 
                 <a href="genre-category.html?genre=Action">Action</a>
-                <a href="genre-category.html?genre=Superhero">Superhero</a>
-                <a href="genre-category.html?genre=Martial%20Arts">Martial Arts</a>
-                <a href="genre-category.html?genre=Action%20Thriller">Action Thriller</a>
-
                 <a href="genre-category.html?genre=Adventure">Adventure</a>
-                <a href="genre-category.html?genre=Survival">Survival</a>
-                <a href="genre-category.html?genre=Treasure%20Hunt">Treasure Hunt</a>
-                <a href="genre-category.html?genre=Road%20Trip">Road Trip</a>
-
                 <a href="genre-category.html?genre=Comedy">Comedy</a>
-                <a href="genre-category.html?genre=Dark%20Comedy">Dark Comedy</a>
-                <a href="genre-category.html?genre=Rom-Com">Rom-Com</a>
-                <a href="genre-category.html?genre=Satire">Satire</a>
-
                 <a href="genre-category.html?genre=Drama">Drama</a>
-                <a href="genre-category.html?genre=Family%20Drama">Family Drama</a>
-                <a href="genre-category.html?genre=Historical">Historical</a>
-                <a href="genre-category.html?genre=Coming-of-Age">Coming-of-Age</a>
 
                 <a href="genre-category.html?genre=Thriller">Thriller</a>
-                <a href="genre-category.html?genre=Mystery">Mystery</a>
-                <a href="genre-category.html?genre=Crime%20Thriller">Crime Thriller</a>
-                <a href="genre-category.html?genre=Political%20Thriller">Political Thriller</a>
-
                 <a href="genre-category.html?genre=Sci-Fi">Sci-Fi</a>
-                <a href="genre-category.html?genre=Space">Space</a>
-                <a href="genre-category.html?genre=Time%20Travel">Time Travel</a>
-                <a href="genre-category.html?genre=Dystopian">Dystopian</a>
-
                 <a href="genre-category.html?genre=Fantasy">Fantasy</a>
-                <a href="genre-category.html?genre=Magical%20Fantasy">Magical Fantasy</a>
-                <a href="genre-category.html?genre=Dark%20Fantasy">Dark Fantasy</a>
-                <a href="genre-category.html?genre=Epic%20Fantasy">Epic Fantasy</a>
-
                 <a href="genre-category.html?genre=Crime">Crime</a>
-                <a href="genre-category.html?genre=Heist">Heist</a>
-                <a href="genre-category.html?genre=Gangster">Gangster</a>
-                <a href="genre-category.html?genre=Detective">Detective</a>
 
                 <a href="genre-category.html?genre=Romance">Romance</a>
-                <a href="genre-category.html?genre=Romantic%20Drama">Romantic Drama</a>
-                <a href="genre-category.html?genre=Teen%20Romance">Teen Romance</a>
-
                 <a href="genre-category.html?genre=Horror">Horror</a>
-                <a href="genre-category.html?genre=Supernatural">Supernatural</a>
-                <a href="genre-category.html?genre=Monster">Monster</a>
-
                 <a href="genre-category.html?genre=Animation">Animation</a>
                 <a href="genre-category.html?genre=Documentary">Documentary</a>
+
                 <a href="genre-category.html?genre=Biography">Biography</a>
+                <a href="genre-category.html?genre=Historical">Historical</a>
                 <a href="genre-category.html?genre=War">War</a>
+                <a href="genre-category.html?genre=Sports">Sports</a>
+
+                <a href="genre-category.html?genre=Musical">Musical</a>
+                <a href="genre-category.html?genre=Western">Western</a>
+                <a href="genre-category.html?genre=Family">Family</a>
+                <a href="genre-category.html?genre=Kids">Kids</a>
 
             </div>
 
@@ -625,8 +617,7 @@
 
     </nav>
 
-
-    <div class="search">
+    <div class="header-search">
 
         <input
             type="text"
@@ -639,100 +630,112 @@
 </header>
 
 
-<!-- HERO -->
+<main>
 
-<div
-    class="hero"
-    id="heroContainer"
-></div>
+    <!-- HERO -->
+
+    <section class="hero" id="hero">
+
+        <div class="hero-content" id="heroContent">
+        </div>
+
+        <div class="hero-dots" id="heroDots">
+        </div>
+
+    </section>
 
 
-<!-- LATEST REVIEWS -->
+    <!-- LATEST REVIEWS -->
 
-<section>
+    <section>
 
-    <h2 class="section-title">
-        Latest <span>Reviews</span>
-    </h2>
+        <h2 class="section-title">
+            Latest Reviews
+        </h2>
 
-    <div class="review-wrapper">
+        <div class="movie-slider-wrapper">
 
-        <button
-            class="slider-arrow left"
-            onclick="slideReviews(-1)"
-        >
-            ‹
-        </button>
+            <button
+                class="slider-button slider-left"
+                onclick="slideRow('latestReviews', -1)"
+            >
+                ‹
+            </button>
+
+            <div
+                class="movie-row"
+                id="latestReviews"
+            >
+            </div>
+
+            <button
+                class="slider-button slider-right"
+                onclick="slideRow('latestReviews', 1)"
+            >
+                ›
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOP MOVIES -->
+
+    <section>
+
+        <h2 class="section-title">
+            Top Movies
+        </h2>
 
         <div
-            class="review-slider"
-            id="reviewSlider"
-        ></div>
-
-        <button
-            class="slider-arrow right"
-            onclick="slideReviews(1)"
+            class="movie-row"
+            id="topMovies"
         >
-            ›
-        </button>
+        </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<!-- TOP MOVIES -->
+    <!-- LATEST MOVIES -->
 
-<section>
+    <section>
 
-    <h2 class="section-title">
-        Top <span>Movies</span>
-    </h2>
+        <h2 class="section-title">
+            Latest Movies
+        </h2>
 
-    <div
-        class="movie-row"
-        id="topMovies"
-    ></div>
+        <div
+            class="movie-row"
+            id="latestMovies"
+        >
+        </div>
 
-</section>
-
-
-<!-- LATEST MOVIES -->
-
-<section>
-
-    <h2 class="section-title">
-        Latest <span>Movies</span>
-    </h2>
-
-    <div
-        class="movie-row"
-        id="latestMovies"
-    ></div>
-
-</section>
+    </section>
 
 
-<!-- COMING SOON -->
+    <!-- COMING SOON -->
 
-<section>
+    <section>
 
-    <h2 class="section-title">
-        Coming <span>Soon</span>
-    </h2>
+        <h2 class="section-title">
+            Coming Soon
+        </h2>
 
-    <div
-        class="movie-row"
-        id="comingSoon"
-    ></div>
+        <div
+            class="movie-row"
+            id="comingSoon"
+        >
+        </div>
 
-</section>
+    </section>
+
+</main>
 
 
 <footer>
 
-    © 2026 Movie Reality.
-    Worth your time or a waste of it?
+    © 2026 Movie Reality — Worth your time or a waste of it?
 
 </footer>
 
@@ -742,373 +745,201 @@
 
 <script>
 
-    /* HERO */
+    /* ================= HERO ================= */
 
-    const heroContainer =
-        document.getElementById("heroContainer");
+    let heroMovies = movies.filter(movie => movie.reviewAvailable);
 
-    const heroMovies =
-        movies.filter(
-            movie => movie.reviewAvailable
-        );
-
-    heroMovies.forEach((movie, index) => {
-
-        const slide =
-            document.createElement("div");
-
-        slide.className =
-            "hero-slide" +
-            (index === 0 ? " active" : "");
-
-        slide.style.backgroundImage =
-            `url('${movie.poster}')`;
-
-        slide.innerHTML = `
-
-            <div class="hero-content">
-
-                <div class="hero-text">
-
-                    <div class="hero-label">
-                        MOVIE REALITY REVIEW
-                    </div>
-
-                    <h1>
-                        ${movie.title}
-                    </h1>
-
-                    <p class="hero-description">
-                        ${movie.synopsis}
-                    </p>
-
-                    <div class="rating">
-
-                        MRP Rating:
-
-                        <span>
-                            ${movie.mrp}/10
-                        </span>
-
-                    </div>
-
-                    <a
-                        href="${movie.id}.html"
-                        class="read-more"
-                    >
-                        Read More
-                    </a>
-
-                </div>
-
-            </div>
-
-        `;
-
-        heroContainer.appendChild(slide);
-
-    });
-
-
-    /* HERO DOTS */
-
-    const heroDotsContainer =
-        document.createElement("div");
-
-    heroDotsContainer.className =
-        "hero-dots";
-
-    heroContainer.appendChild(
-        heroDotsContainer
-    );
-
-    heroMovies.forEach((movie, index) => {
-
-        const dot =
-            document.createElement("div");
-
-        dot.className =
-            "hero-dot" +
-            (index === 0 ? " active" : "");
-
-        dot.addEventListener(
-            "click",
-            () => showHero(index)
-        );
-
-        heroDotsContainer.appendChild(dot);
-
-    });
-
-
-    const heroSlides =
-        document.querySelectorAll(".hero-slide");
-
-    const heroDots =
-        document.querySelectorAll(".hero-dot");
-
-    let currentHero = 0;
-
+    let heroIndex = 0;
 
     function showHero(index) {
 
-        heroSlides.forEach((slide, i) => {
-
-            slide.classList.toggle(
-                "active",
-                i === index
-            );
-
-        });
-
-        heroDots.forEach((dot, i) => {
-
-            dot.classList.toggle(
-                "active",
-                i === index
-            );
-
-        });
-
-        currentHero = index;
-
-    }
-
-
-    function nextHero() {
-
-        if (heroSlides.length === 0) {
+        if (!heroMovies.length) {
             return;
         }
 
-        currentHero =
-            (currentHero + 1) %
-            heroSlides.length;
+        const movie = heroMovies[index];
 
-        showHero(currentHero);
+        document.getElementById("heroContent").innerHTML = `
+
+            <h1>${movie.title}</h1>
+
+            <div class="hero-meta">
+                ${movie.year} · ${movie.genres.join(" · ")}
+            </div>
+
+            <div class="hero-score">
+                MRP ${movie.mrp}/10
+            </div>
+
+            <p>
+                ${movie.synopsis}
+            </p>
+
+            <a
+                class="hero-button"
+                href="${movie.id}.html"
+            >
+                Read Review
+            </a>
+
+        `;
+
+        document.getElementById("heroDots").innerHTML =
+            heroMovies.map((_, i) => `
+                <span
+                    class="hero-dot ${i === index ? "active" : ""}"
+                    onclick="showHero(${i})"
+                ></span>
+            `).join("");
 
     }
 
 
-    setInterval(nextHero, 6000);
+    if (heroMovies.length) {
+
+        showHero(0);
+
+        setInterval(() => {
+
+            heroIndex++;
+
+            if (heroIndex >= heroMovies.length) {
+                heroIndex = 0;
+            }
+
+            showHero(heroIndex);
+
+        }, 6000);
+
+    }
 
 
-    /* LATEST REVIEWS */
+    /* ================= MOVIE CARD ================= */
 
-    const reviewSlider =
-        document.getElementById(
-            "reviewSlider"
-        );
+    function createMovieCard(movie) {
 
-    const reviewedMovies =
-        movies.filter(
-            movie => movie.reviewAvailable
-        );
+        return `
 
-    reviewedMovies.forEach(movie => {
-
-        const card =
-            document.createElement("a");
-
-        card.href =
-            `${movie.id}.html`;
-
-        card.className =
-            "movie-card";
-
-        card.innerHTML = `
-
-            <img
-                src="${movie.poster}"
-                alt="${movie.title}"
+            <a
+                href="${movie.id}.html"
+                class="movie-card"
             >
 
-            <div class="movie-info">
+                <div class="poster-wrap">
+
+                    <img
+                        src="${movie.poster}"
+                        alt="${movie.title}"
+                        onerror="this.src='https://via.placeholder.com/300x450?text=Movie+Poster'"
+                    >
+
+                    <div class="poster-score">
+                        MRP ${movie.mrp}
+                    </div>
+
+                </div>
 
                 <h3>
                     ${movie.title}
                 </h3>
 
-                <p>
-                    MRP ${movie.mrp}/10
-                </p>
+                <div class="movie-year">
+                    ${movie.year}
+                </div>
 
-            </div>
+            </a>
 
         `;
 
-        reviewSlider.appendChild(card);
-
-    });
+    }
 
 
-    /* TOP MOVIES */
+    /* ================= LATEST REVIEWS ================= */
+
+    const reviewedMovies =
+        movies.filter(movie => movie.reviewAvailable);
+
+    document.getElementById("latestReviews").innerHTML =
+        reviewedMovies
+            .map(createMovieCard)
+            .join("");
+
+
+    /* ================= TOP MOVIES ================= */
 
     const topMovies =
-        document.getElementById(
-            "topMovies"
-        );
+        [...movies]
+            .filter(movie => !movie.comingSoon)
+            .sort((a, b) => b.mrp - a.mrp);
 
-    const sortedMovies =
-        [...movies].sort(
-            (a, b) => b.mrp - a.mrp
-        );
-
-    sortedMovies.forEach(movie => {
-
-        const card =
-            document.createElement("a");
-
-        card.href =
-            `${movie.id}.html`;
-
-        card.className =
-            "small-card";
-
-        card.innerHTML = `
-
-            <img
-                src="${movie.poster}"
-                alt="${movie.title}"
-                title="${movie.title}"
-            >
-
-        `;
-
-        topMovies.appendChild(card);
-
-    });
+    document.getElementById("topMovies").innerHTML =
+        topMovies
+            .map(createMovieCard)
+            .join("");
 
 
-    /* LATEST MOVIES */
+    /* ================= LATEST MOVIES ================= */
 
     const latestMovies =
-        document.getElementById(
-            "latestMovies"
-        );
+        [...movies]
+            .filter(movie => !movie.comingSoon)
+            .sort((a, b) => b.year - a.year);
 
-    const latestSorted =
-        [...movies].sort(
-            (a, b) => b.year - a.year
-        );
-
-    latestSorted.forEach(movie => {
-
-        const card =
-            document.createElement("a");
-
-        card.href =
-            `${movie.id}.html`;
-
-        card.className =
-            "small-card";
-
-        card.innerHTML = `
-
-            <img
-                src="${movie.poster}"
-                alt="${movie.title}"
-                title="${movie.title}"
-            >
-
-        `;
-
-        latestMovies.appendChild(card);
-
-    });
+    document.getElementById("latestMovies").innerHTML =
+        latestMovies
+            .map(createMovieCard)
+            .join("");
 
 
-    /* COMING SOON */
+    /* ================= COMING SOON ================= */
 
-    const comingSoon =
-        document.getElementById(
-            "comingSoon"
-        );
+    const comingSoonMovies =
+        movies.filter(movie => movie.comingSoon);
 
-    movies
-        .filter(movie => movie.comingSoon === true)
-        .forEach(movie => {
-
-            const card =
-                document.createElement("a");
-
-            card.href =
-                `${movie.id}.html`;
-
-            card.className =
-                "small-card";
-
-            card.innerHTML = `
-
-                <img
-                    src="${movie.poster}"
-                    alt="${movie.title}"
-                    title="${movie.title}"
-                >
-
-            `;
-
-            comingSoon.appendChild(card);
-
-        });
+    document.getElementById("comingSoon").innerHTML =
+        comingSoonMovies
+            .map(createMovieCard)
+            .join("");
 
 
-    /* REVIEW SLIDER */
+    /* ================= SLIDER ================= */
 
-    function slideReviews(direction) {
+    function slideRow(id, direction) {
 
-        const slider =
-            document.getElementById(
-                "reviewSlider"
-            );
+        const row =
+            document.getElementById(id);
 
-        slider.scrollBy({
-
-            left: direction * 650,
-
+        row.scrollBy({
+            left: direction * 600,
             behavior: "smooth"
-
         });
 
     }
 
 
-    /* SEARCH */
+    /* ================= SEARCH ================= */
 
     const searchInput =
-        document.getElementById(
-            "searchInput"
-        );
+        document.getElementById("searchInput");
 
-    searchInput.addEventListener(
-        "input",
-        function () {
+    searchInput.addEventListener("input", function () {
 
-            const searchValue =
-                this.value
+        const searchTerm =
+            this.value.toLowerCase().trim();
+
+        const results =
+            reviewedMovies.filter(movie =>
+                movie.title
                     .toLowerCase()
-                    .trim();
+                    .includes(searchTerm)
+            );
 
-            const cards =
-                document.querySelectorAll(
-                    "#reviewSlider .movie-card"
-                );
+        document.getElementById("latestReviews").innerHTML =
+            results
+                .map(createMovieCard)
+                .join("");
 
-            cards.forEach(card => {
-
-                const title =
-                    card.innerText
-                        .toLowerCase();
-
-                card.style.display =
-                    title.includes(searchValue)
-                    ? "block"
-                    : "none";
-
-            });
-
-        }
-    );
+    });
 
 </script>
 <script src="movies.js"></script>
