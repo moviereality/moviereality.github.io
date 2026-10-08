@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Movies - Movie Reality</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #080b18;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            height: 70px;
+
+            background: #080b18;
+
+            border-bottom:
+                1px solid rgba(110,231,255,0.15);
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 50px;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #6ee7ff;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            margin-left: 50px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #6ee7ff;
+        }
+
+        .search {
+            margin-left: auto;
+        }
+
+        .search input {
+            width: 220px;
+
+            padding: 10px 15px;
+
+            background: #10152a;
+
+            border:
+                1px solid rgba(110,231,255,0.25);
+
+            border-radius: 20px;
+
+            color: white;
+
+            outline: none;
+        }
+
+        main {
+            padding:
+                130px 50px 80px;
+        }
+
+        .page-title {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .page-title span {
+            color: #6ee7ff;
+        }
+
+        .page-description {
+            color: #9da5bb;
+            margin-bottom: 45px;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+
+        .category-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .category-card {
+            background: #10152a;
+
+            border:
+                1px solid rgba(110,231,255,0.12);
+
+            border-radius: 10px;
+
+            padding: 25px;
+
+            text-decoration: none;
+
+            color: white;
+
+            transition: 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+
+            border-color: #6ee7ff;
+        }
+
+        .category-card h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .category-card p {
+            color: #8f97ad;
+            font-size: 14px;
+        }
+
+        footer {
+            border-top:
+                1px solid rgba(110,231,255,0.12);
+
+            padding: 35px;
+
+            text-align: center;
+
+            color: #777f96;
+        }
+
+        @media(max-width:800px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .category-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            main {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        MOVIE <span>REALITY</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="genre.html">Genre</a>
+        <a href="artists.html">Artists</a>
+        <a href="about.html">About</a>
+
+    </nav>
+
+    <div class="search">
+
+        <input
+            type="text"
+            placeholder="Search movies..."
+        >
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <h1 class="page-title">
+        Movies <span>Categories</span>
+    </h1>
+
+    <p class="page-description">
+        Find movies based on what you are actually in the mood for.
+        Highly rated, funny, feel-good, hidden gems and more.
+    </p>
+
+
+    <div class="category-grid">
+
+        <a
+            class="category-card"
+            href="category.html?category=Popular%20Movies"
+        >
+            <h2>Popular Movies</h2>
+            <p>Movies everyone is talking about.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=Trending%20Now"
+        >
+            <h2>Trending Now</h2>
+            <p>What is currently getting attention.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=Highly%20Rated"
+        >
+            <h2>Highly Rated</h2>
+            <p>Movies with strong MRP scores.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=New%20Releases"
+        >
+            <h2>New Releases</h2>
+            <p>Fresh movies to discover.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=Feel%20Good"
+        >
+            <h2>Feel Good</h2>
+            <p>Movies that leave you feeling good.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=Funny%20%26%20Fun"
+        >
+            <h2>Funny & Fun</h2>
+            <p>Easy and entertaining watches.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=Inspirational"
+        >
+            <h2>Inspirational</h2>
+            <p>Stories that give you a push.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=Emotional"
+        >
+            <h2>Emotional</h2>
+            <p>Stories that hit differently.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=Relaxing"
+        >
+            <h2>Relaxing</h2>
+            <p>Comfortable movies for a quiet evening.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=Hidden%20Gems"
+        >
+            <h2>Hidden Gems</h2>
+            <p>Great movies you may have missed.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=One-Time%20Watch"
+        >
+            <h2>One-Time Watch</h2>
+            <p>Worth watching once.</p>
+        </a>
+
+        <a
+            class="category-card"
+            href="category.html?category=Short%20%26%20Easy%20Watch"
+        >
+            <h2>Short & Easy Watch</h2>
+            <p>When you do not want a long commitment.</p>
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    © 2026 Movie Reality
+
+</footer>
+
+</body>
+
+</html>
