@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Movie Category - Movie Reality</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #080b18;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            height: 70px;
+
+            background: #080b18;
+
+            border-bottom:
+                1px solid rgba(110,231,255,0.15);
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 50px;
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #6ee7ff;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            margin-left: 50px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #6ee7ff;
+        }
+
+        .search {
+            margin-left: auto;
+        }
+
+        .search input {
+            width: 220px;
+
+            padding: 10px 15px;
+
+            background: #10152a;
+
+            border:
+                1px solid rgba(110,231,255,0.25);
+
+            border-radius: 20px;
+
+            color: white;
+
+            outline: none;
+        }
+
+        main {
+            padding: 125px 50px 80px;
+        }
+
+        .page-title {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .page-title span {
+            color: #6ee7ff;
+        }
+
+        .page-description {
+            color: #8f97ad;
+            margin-bottom: 40px;
+        }
+
+        .movie-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 35px 22px;
+        }
+
+        .movie-card {
+            text-decoration: none;
+            color: white;
+            min-width: 0;
+        }
+
+        .poster-wrapper {
+            position: relative;
+        }
+
+        .movie-card img {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+
+            display: block;
+
+            transition: 0.3s;
+        }
+
+        .movie-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .mrp {
+            position: absolute;
+
+            top: 10px;
+            right: 10px;
+
+            background: rgba(8,11,24,0.9);
+
+            color: #6ee7ff;
+
+            padding: 6px 9px;
+
+            border-radius: 5px;
+
+            font-size: 13px;
+
+            opacity: 0;
+
+            transition: 0.3s;
+        }
+
+        .movie-card:hover .mrp {
+            opacity: 1;
+        }
+
+        .movie-title {
+            margin-top: 10px;
+
+            font-size: 16px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+        .movie-year {
+            color: #7f879c;
+
+            font-size: 14px;
+
+            margin-top: 5px;
+        }
+
+        .empty {
+            color: #8f97ad;
+            font-size: 18px;
+            padding: 50px 0;
+        }
+
+        .pagination {
+            display: flex;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            margin-top: 55px;
+        }
+
+        .page-button {
+            padding: 9px 13px;
+
+            background: #10152a;
+
+            border:
+                1px solid rgba(110,231,255,0.2);
+
+            color: white;
+
+            border-radius: 5px;
+
+            cursor: pointer;
+        }
+
+        .page-button.active,
+        .page-button:hover {
+            background: #1683d8;
+        }
+
+        footer {
+            border-top:
+                1px solid rgba(110,231,255,0.12);
+
+            padding: 35px;
+
+            text-align: center;
+
+            color: #777f96;
+        }
+
+        @media(max-width:1000px) {
+
+            .movie-grid {
+                grid-template-columns:
+                    repeat(4, 1fr);
+            }
+
+        }
+
+        @media(max-width:800px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .movie-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            main {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+        }
+
+        @media(max-width:550px) {
+
+            .movie-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        MOVIE <span>REALITY</span>
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+        <a href="movies.html">Movies</a>
+        <a href="genre.html">Genre</a>
+        <a href="artists.html">Artists</a>
+        <a href="about.html">About</a>
+
+    </nav>
+
+    <div class="search">
+
+        <input
+            type="text"
+            placeholder="Search movies..."
+        >
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <h1
+        class="page-title"
+        id="categoryTitle"
+    >
+        Movies
+    </h1>
+
+    <p
+        class="page-description"
+        id="categoryDescription"
+    ></p>
+
+
+    <div
+        class="movie-grid"
+        id="movieGrid"
+    ></div>
+
+
+    <div
+        class="pagination"
+        id="pagination"
+    ></div>
+
+</main>
+
+
+<footer>
+
+    © 2026 Movie Reality
+
+</footer>
+
+
+<script src="movies.js"></script>
+
+
+<script>
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const category =
+        params.get("category");
+
+
+    const title =
+        document.getElementById(
+            "categoryTitle"
+        );
+
+    const description =
+        document.getElementById(
+            "categoryDescription"
+        );
+
+    const grid =
+        document.getElementById(
+            "movieGrid"
+        );
+
+    const pagination =
+        document.getElementById(
+            "pagination"
+        );
+
+
+    title.innerHTML =
+        `${category || "Movies"} <span>Movies</span>`;
+
+
+    description.innerText =
+        `Movies selected for the ${category || "Movies"} category.`;
+
+
+    const filteredMovies =
+        movies.filter(movie =>
+            movie.categories &&
+            movie.categories.includes(category)
+        );
+
+
+    const moviesPerPage = 35;
+
+    let currentPage = 1;
+
+
+    function renderMovies() {
+
+        grid.innerHTML = "";
+
+        pagination.innerHTML = "";
+
+
+        if (filteredMovies.length === 0) {
+
+            grid.innerHTML =
+                `<div class="empty">
+                    No movies in this category yet.
+                </div>`;
+
+            return;
+        }
+
+
+        const totalPages =
+            Math.ceil(
+                filteredMovies.length /
+                moviesPerPage
+            );
+
+
+        const start =
+            (currentPage - 1) *
+            moviesPerPage;
+
+
+        const pageMovies =
+            filteredMovies.slice(
+                start,
+                start + moviesPerPage
+            );
+
+
+        pageMovies.forEach(movie => {
+
+            const card =
+                document.createElement("a");
+
+            card.className =
+                "movie-card";
+
+            card.href =
+                `${movie.id}.html`;
+
+
+            card.innerHTML = `
+
+                <div class="poster-wrapper">
+
+                    <img
+                        src="${movie.poster}"
+                        alt="${movie.title}"
+                    >
+
+                    <div class="mrp">
+                        MRP ${movie.mrp}/10
+                    </div>
+
+                </div>
+
+                <div class="movie-title">
+                    ${movie.title}
+                </div>
+
+                <div class="movie-year">
+                    ${movie.year}
+                </div>
+
+            `;
+
+
+            grid.appendChild(card);
+
+        });
+
+
+        for (
+            let i = 1;
+            i <= totalPages;
+            i++
+        ) {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "page-button" +
+                (i === currentPage
+                    ? " active"
+                    : "");
+
+            button.innerText = i;
+
+
+            button.onclick = () => {
+
+                currentPage = i;
+
+                renderMovies();
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            };
+
+
+            pagination.appendChild(
+                button
+            );
+
+        }
+
+    }
+
+
+    renderMovies();
+
+</script>
+
+</body>
+
+</html>
