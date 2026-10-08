@@ -1,4 +1,3 @@
-```javascript
 const movies = [
 
     {
@@ -14,19 +13,21 @@ const movies = [
 
         genres: [
             "Sci-Fi",
-            "Adventure"
+            "Adventure",
+            "Space"
         ],
 
         categories: [
             "Highly Rated",
-            "Adventure",
-            "Space"
+            "Adventure"
         ],
 
         synopsis:
             "A thrilling space adventure with mystery, science, friendship and a whole lot of unexpected moments.",
 
         reviewAvailable: true,
+
+        comingSoon: false,
 
         reviewVideo:
             "YOUR_YOUTUBE_VIDEO_ID",
@@ -66,6 +67,8 @@ const movies = [
 
         reviewAvailable: false,
 
+        comingSoon: true,
+
         reviewVideo: "",
 
         mainPeople: [],
@@ -88,7 +91,8 @@ const movies = [
         mrp: 7.8,
 
         genres: [
-            "Comedy"
+            "Comedy",
+            "Feel Good"
         ],
 
         categories: [
@@ -101,6 +105,8 @@ const movies = [
 
         reviewAvailable: false,
 
+        comingSoon: true,
+
         reviewVideo: "",
 
         mainPeople: [],
@@ -111,4 +117,3 @@ const movies = [
     }
 
 ];
-```
