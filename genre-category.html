@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
@@ -10,7 +9,7 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Genre - Movie Reality</title>
+    <title>Movie Reality - Genre</title>
 
     <style>
 
@@ -21,9 +20,14 @@
         }
 
         body {
+            font-family: Arial, Helvetica, sans-serif;
             background: #080b18;
             color: white;
-            font-family: Arial, sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
 
         header {
@@ -35,147 +39,110 @@
                 1px solid rgba(110,231,255,0.15);
 
             display: flex;
+
             align-items: center;
 
-            padding: 0 50px;
-
-            position: fixed;
-
-            top: 0;
-            left: 0;
-            right: 0;
-
-            z-index: 1000;
+            padding: 0 40px;
         }
 
         .logo {
-            font-size: 22px;
+            color: #6ee7ff;
+
+            font-size: 24px;
+
             font-weight: bold;
         }
 
-        .logo span {
-            color: #6ee7ff;
-        }
-
-        nav {
-            display: flex;
-            gap: 28px;
-            margin-left: 50px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: #6ee7ff;
-        }
-
-        .search {
+        .back {
             margin-left: auto;
-        }
 
-        .search input {
-            width: 220px;
-
-            padding: 10px 15px;
-
-            background: #10152a;
-
-            border:
-                1px solid rgba(110,231,255,0.25);
-
-            border-radius: 20px;
-
-            color: white;
-
-            outline: none;
+            color: #6ee7ff;
         }
 
         main {
-            padding: 125px 50px 80px;
+            padding: 110px 40px 50px;
         }
 
-        .page-title {
-            font-size: 40px;
+        h1 {
+            font-size: 34px;
+
             margin-bottom: 10px;
         }
 
-        .page-title span {
-            color: #6ee7ff;
-        }
+        .description {
+            color: #8d95a8;
 
-        .page-description {
-            color: #8f97ad;
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         .movie-grid {
             display: grid;
 
             grid-template-columns:
-                repeat(5, 1fr);
+                repeat(5, minmax(0, 1fr));
 
             gap: 35px 22px;
         }
 
         .movie-card {
-            text-decoration: none;
-            color: white;
             min-width: 0;
         }
 
-        .poster-wrapper {
+        .poster {
             position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 2 / 3;
+
+            overflow: hidden;
+
+            border-radius: 7px;
+
+            background: #121728;
         }
 
-        .movie-card img {
+        .poster img {
             width: 100%;
-            aspect-ratio: 2 / 3;
+            height: 100%;
 
             object-fit: cover;
 
-            border-radius: 8px;
-
             display: block;
-
-            transition: 0.3s;
         }
 
-        .movie-card:hover img {
-            transform: scale(1.03);
-        }
-
-        .mrp {
+        .score {
             position: absolute;
 
-            top: 10px;
-            right: 10px;
+            top: 8px;
+            right: 8px;
 
-            background: rgba(8,11,24,0.9);
+            padding: 5px 7px;
+
+            background:
+                rgba(0,0,0,0.85);
 
             color: #6ee7ff;
 
-            padding: 6px 9px;
+            border-radius: 4px;
 
-            border-radius: 5px;
+            font-size: 12px;
 
-            font-size: 13px;
+            font-weight: bold;
 
             opacity: 0;
 
-            transition: 0.3s;
+            transition: 0.2s;
         }
 
-        .movie-card:hover .mrp {
+        .movie-card:hover .score {
             opacity: 1;
         }
 
         .movie-title {
-            margin-top: 10px;
+            margin-top: 9px;
 
-            font-size: 16px;
+            font-size: 15px;
 
             white-space: nowrap;
 
@@ -184,97 +151,48 @@
             text-overflow: ellipsis;
         }
 
-        .movie-year {
-            color: #7f879c;
-
-            font-size: 14px;
-
+        .year {
             margin-top: 5px;
+
+            color: #8d95a8;
+
+            font-size: 13px;
         }
 
         .empty {
-            color: #8f97ad;
-            font-size: 18px;
-            padding: 50px 0;
+            color: #8d95a8;
+
+            padding: 40px 0;
         }
 
-        .pagination {
-            display: flex;
-
-            justify-content: center;
-
-            gap: 8px;
-
-            margin-top: 55px;
-        }
-
-        .page-button {
-            padding: 9px 13px;
-
-            background: #10152a;
-
-            border:
-                1px solid rgba(110,231,255,0.2);
-
-            color: white;
-
-            border-radius: 5px;
-
-            cursor: pointer;
-        }
-
-        .page-button.active,
-        .page-button:hover {
-            background: #1683d8;
-        }
-
-        footer {
-            border-top:
-                1px solid rgba(110,231,255,0.12);
-
-            padding: 35px;
-
-            text-align: center;
-
-            color: #777f96;
-        }
-
-        @media(max-width:1000px) {
+        @media (max-width: 1100px) {
 
             .movie-grid {
                 grid-template-columns:
-                    repeat(4, 1fr);
+                    repeat(4, minmax(0, 1fr));
             }
 
         }
 
-        @media(max-width:800px) {
-
-            header {
-                padding: 0 20px;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .movie-grid {
-                grid-template-columns:
-                    repeat(3, 1fr);
-            }
+        @media (max-width: 800px) {
 
             main {
-                padding-left: 20px;
-                padding-right: 20px;
+                padding:
+                    100px 20px 40px;
+            }
+
+            .movie-grid {
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
             }
 
         }
 
-        @media(max-width:550px) {
+        @media (max-width: 550px) {
 
             .movie-grid {
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(2, minmax(0, 1fr));
             }
 
         }
@@ -287,248 +205,146 @@
 
 <header>
 
-    <div class="logo">
-        MOVIE <span>REALITY</span>
-    </div>
+    <a
+        href="index.html"
+        class="logo"
+    >
+        MOVIE REALITY
+    </a>
 
-    <nav>
-
-        <a href="index.html">Home</a>
-        <a href="movies.html">Movies</a>
-        <a href="genre.html">Genre</a>
-        <a href="artists.html">Artists</a>
-        <a href="about.html">About</a>
-
-    </nav>
-
-    <div class="search">
-
-        <input
-            type="text"
-            placeholder="Search movies..."
-        >
-
-    </div>
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← Home
+    </a>
 
 </header>
 
 
 <main>
 
-    <h1
-        class="page-title"
-        id="genreTitle"
-    >
+    <h1 id="pageTitle">
         Genre
     </h1>
 
     <p
-        class="page-description"
-        id="genreDescription"
-    ></p>
-
+        class="description"
+        id="pageDescription"
+    >
+    </p>
 
     <div
         class="movie-grid"
         id="movieGrid"
-    ></div>
-
-
-    <div
-        class="pagination"
-        id="pagination"
-    ></div>
+    >
+    </div>
 
 </main>
 
 
-<footer>
-
-    © 2026 Movie Reality
-
-</footer>
-
-
 <script src="movies.js"></script>
-
 
 <script>
 
     const params =
-        new URLSearchParams(
-            window.location.search
-        );
+        new URLSearchParams(window.location.search);
 
     const genre =
         params.get("genre");
 
 
-    const title =
-        document.getElementById(
-            "genreTitle"
-        );
+    const pageTitle =
+        document.getElementById("pageTitle");
 
-    const description =
-        document.getElementById(
-            "genreDescription"
-        );
+    const pageDescription =
+        document.getElementById("pageDescription");
 
-    const grid =
-        document.getElementById(
-            "movieGrid"
-        );
-
-    const pagination =
-        document.getElementById(
-            "pagination"
-        );
+    const movieGrid =
+        document.getElementById("movieGrid");
 
 
-    title.innerHTML =
-        `${genre || "Movie"} <span>Movies</span>`;
+    if (!genre) {
+
+        pageTitle.textContent = "Genre";
+
+        pageDescription.textContent =
+            "Browse movies by genre.";
+
+        movieGrid.innerHTML =
+            `<div class="empty">
+                No genre selected.
+            </div>`;
+
+    } else {
+
+        pageTitle.textContent = genre;
+
+        pageDescription.textContent =
+            "Movies in the " +
+            genre +
+            " genre.";
 
 
-    description.innerText =
-        `Explore ${genre || "movie"} movies on Movie Reality.`;
+        const results =
+            movies.filter(function(movie) {
+
+                return movie.genres.includes(genre);
+
+            });
 
 
-    const filteredMovies =
-        movies.filter(movie =>
-            movie.genres &&
-            movie.genres.includes(genre)
-        );
+        if (!results.length) {
 
-
-    const moviesPerPage = 35;
-
-    let currentPage = 1;
-
-
-    function renderMovies() {
-
-        grid.innerHTML = "";
-
-        pagination.innerHTML = "";
-
-
-        if (filteredMovies.length === 0) {
-
-            grid.innerHTML =
+            movieGrid.innerHTML =
                 `<div class="empty">
-                    No movies in this genre yet.
+                    No movies found in this genre yet.
                 </div>`;
 
-            return;
-        }
+        } else {
 
+            movieGrid.innerHTML =
+                results.map(function(movie) {
 
-        const totalPages =
-            Math.ceil(
-                filteredMovies.length /
-                moviesPerPage
-            );
+                    return `
 
+                        <a
+                            href="${movie.id}.html"
+                            class="movie-card"
+                        >
 
-        const start =
-            (currentPage - 1) *
-            moviesPerPage;
+                            <div class="poster">
 
+                                <img
+                                    src="${movie.poster}"
+                                    alt="${movie.title}"
+                                >
 
-        const pageMovies =
-            filteredMovies.slice(
-                start,
-                start + moviesPerPage
-            );
+                                <div class="score">
+                                    MRP ${movie.mrp}
+                                </div>
 
+                            </div>
 
-        pageMovies.forEach(movie => {
+                            <div class="movie-title">
+                                ${movie.title}
+                            </div>
 
-            const card =
-                document.createElement("a");
+                            <div class="year">
+                                ${movie.year}
+                            </div>
 
-            card.className =
-                "movie-card";
+                        </a>
 
-            card.href =
-                `${movie.id}.html`;
+                    `;
 
-
-            card.innerHTML = `
-
-                <div class="poster-wrapper">
-
-                    <img
-                        src="${movie.poster}"
-                        alt="${movie.title}"
-                    >
-
-                    <div class="mrp">
-                        MRP ${movie.mrp}/10
-                    </div>
-
-                </div>
-
-                <div class="movie-title">
-                    ${movie.title}
-                </div>
-
-                <div class="movie-year">
-                    ${movie.year}
-                </div>
-
-            `;
-
-
-            grid.appendChild(card);
-
-        });
-
-
-        for (
-            let i = 1;
-            i <= totalPages;
-            i++
-        ) {
-
-            const button =
-                document.createElement("button");
-
-            button.className =
-                "page-button" +
-                (i === currentPage
-                    ? " active"
-                    : "");
-
-            button.innerText = i;
-
-
-            button.onclick = () => {
-
-                currentPage = i;
-
-                renderMovies();
-
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
-
-            };
-
-
-            pagination.appendChild(
-                button
-            );
+                }).join("");
 
         }
 
     }
 
-
-    renderMovies();
-
 </script>
 
 </body>
-
 </html>
