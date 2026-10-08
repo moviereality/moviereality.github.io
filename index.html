@@ -1,879 +1,1099 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Movie Reality</title>
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <meta charset="UTF-8">
 
-html {
-    scroll-behavior: smooth;
-}
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #080b18;
-    color: #ffffff;
-}
+    <title>Movie Reality</title>
 
-/* HEADER */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 72px;
-    background: rgba(8, 11, 24, 0.96);
-    backdrop-filter: blur(12px);
-    display: flex;
-    align-items: center;
-    padding: 0 5%;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(110, 231, 255, 0.12);
-}
+    <style>
 
-.logo {
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: #ffffff;
-    margin-right: 45px;
-    white-space: nowrap;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-.logo span {
-    color: #6ee7ff;
-}
+        body {
+            background: #080b18;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
 
-nav {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
+        header {
+            height: 70px;
+            background: #080b18;
+            border-bottom: 1px solid rgba(110, 231, 255, 0.15);
 
-nav a {
-    color: #cbd5e1;
-    text-decoration: none;
-    font-size: 15px;
-    transition: 0.3s;
-}
+            display: flex;
+            align-items: center;
 
-nav a:hover {
-    color: #6ee7ff;
-}
+            padding: 0 50px;
 
-.search {
-    margin-left: auto;
-}
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
 
-.search input {
-    width: 210px;
-    padding: 10px 15px;
-    border-radius: 25px;
-    border: 1px solid #26304d;
-    background: #10162a;
-    color: #ffffff;
-    outline: none;
-}
+            z-index: 1000;
+        }
 
-.search input::placeholder {
-    color: #64748b;
-}
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
 
-.search input:focus {
-    border-color: #6ee7ff;
-}
+        .logo span {
+            color: #6ee7ff;
+        }
 
-/* HERO */
-.hero {
-    margin-top: 72px;
-    height: 600px;
-    position: relative;
-    overflow: hidden;
-}
+        nav {
+            display: flex;
+            gap: 28px;
+            margin-left: 50px;
+        }
 
-.hero-slide {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 1s ease;
-    background-size: cover;
-    background-position: center;
-}
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
 
-.hero-slide.active {
-    opacity: 1;
-}
+        nav a:hover {
+            color: #6ee7ff;
+        }
 
-.hero-slide::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        linear-gradient(
-            90deg,
-            rgba(8, 11, 24, 0.38) 0%,
-            rgba(8, 11, 24, 0.08) 55%,
-            rgba(8, 11, 24, 0.25) 100%
-        ),
-        linear-gradient(
-            0deg,
-            rgba(8, 11, 24, 0.55) 0%,
-            rgba(8, 11, 24, 0.05) 60%
-        );
-}
+        .search {
+            margin-left: auto;
+        }
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    max-width: 1250px;
-    margin: auto;
-    padding: 100px 5%;
-    display: flex;
-    align-items: center;
-}
+        .search input {
+            width: 220px;
+            padding: 10px 15px;
 
-.hero-text {
-    max-width: 600px;
-}
+            background: #10152a;
+            border: 1px solid rgba(110, 231, 255, 0.25);
 
-.hero-label {
-    color: #6ee7ff;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
+            border-radius: 20px;
 
-.hero h1 {
-    font-size: 60px;
-    line-height: 1.05;
-    margin-bottom: 18px;
-}
+            color: white;
+            outline: none;
+        }
 
-.hero-description {
-    color: #e2e8f0;
-    font-size: 17px;
-    line-height: 1.6;
-    margin-bottom: 22px;
-}
+        .search input::placeholder {
+            color: #8b91a8;
+        }
 
-.rating {
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 25px;
-}
+        /* HERO */
 
-.rating span {
-    color: #ffffff;
-}
+        .hero {
+            height: 650px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
 
-.read-more {
-    display: inline-block;
-    padding: 13px 24px;
-    background: #1683d8;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: 0.3s;
-}
+        .hero-slide {
+            position: absolute;
 
-.read-more:hover {
-    background: #20a4ff;
-    color: #ffffff;
-    transform: translateY(-2px);
-}
+            inset: 0;
 
-/* HERO DOTS */
-.hero-dots {
-    position: absolute;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-    display: flex;
-    gap: 9px;
-}
+            background-size: cover;
+            background-position: center;
 
-.hero-dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.45);
-    cursor: pointer;
-    transition: 0.3s;
-}
+            opacity: 0;
 
-.hero-dot.active {
-    background: #6ee7ff;
-    width: 25px;
-    border-radius: 10px;
-}
+            transition: opacity 0.8s ease;
+        }
 
-/* SECTIONS */
-section {
-    width: 100%;
-    padding: 55px 5%;
-}
+        .hero-slide::before {
+            content: "";
 
-.section-title {
-    font-size: 27px;
-    margin-bottom: 25px;
-}
+            position: absolute;
+            inset: 0;
 
-.section-title span {
-    color: #6ee7ff;
-}
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(8, 11, 24, 0.98) 0%,
+                    rgba(8, 11, 24, 0.75) 40%,
+                    rgba(8, 11, 24, 0.25) 100%
+                );
+        }
 
-/* LATEST REVIEWS */
-.review-wrapper {
-    position: relative;
-    width: 100%;
-}
+        .hero-slide.active {
+            opacity: 1;
+        }
 
-.review-slider {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    width: 100%;
-}
+        .hero-content {
+            position: relative;
 
-.review-slider::-webkit-scrollbar {
-    display: none;
-}
+            height: 100%;
 
-.movie-card {
-    flex: 0 0 210px;
-    height: 310px;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    background: #11182d;
-    cursor: pointer;
-    text-decoration: none;
-    color: #ffffff;
-    display: block;
-}
+            display: flex;
+            align-items: center;
 
-.movie-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.4s;
-}
+            padding: 0 8%;
+        }
 
-.movie-card:hover img {
-    transform: scale(1.04);
-}
+        .hero-text {
+            max-width: 600px;
+        }
 
-.movie-info {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 45px 15px 15px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.95));
-}
+        .hero-label {
+            color: #6ee7ff;
+            font-size: 13px;
+            font-weight: bold;
 
-.movie-info h3 {
-    font-size: 17px;
-    margin-bottom: 5px;
-}
+            letter-spacing: 2px;
 
-.movie-info p {
-    color: #6ee7ff;
-    font-size: 14px;
-}
+            margin-bottom: 15px;
+        }
 
-/* SLIDER ARROWS */
-.slider-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 42px;
-    height: 42px;
-    border: none;
-    border-radius: 50%;
-    background: rgba(22, 131, 216, 0.95);
-    color: #ffffff;
-    font-size: 25px;
-    cursor: pointer;
-    z-index: 5;
-    opacity: 0;
-    transition: 0.3s;
-}
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.05;
 
-.review-wrapper:hover .slider-arrow {
-    opacity: 1;
-}
+            margin-bottom: 20px;
+        }
 
-.slider-arrow.left {
-    left: 8px;
-}
+        .hero-description {
+            color: #c5cadb;
 
-.slider-arrow.right {
-    right: 8px;
-}
+            font-size: 17px;
+            line-height: 1.6;
 
-/* OTHER MOVIE SECTIONS */
-.movie-row {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    width: 100%;
-}
+            margin-bottom: 25px;
+        }
 
-.movie-row::-webkit-scrollbar {
-    display: none;
-}
+        .rating {
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
 
-.small-card {
-    flex: 0 0 200px;
-    height: 285px;
-    border-radius: 9px;
-    overflow: hidden;
-    background: #11182d;
-}
+        .rating span {
+            color: #6ee7ff;
+            font-size: 20px;
+            font-weight: bold;
+        }
 
-.small-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.4s;
-}
+        .read-more {
+            display: inline-block;
 
-.small-card:hover img {
-    transform: scale(1.04);
-}
+            background: #1683d8;
+            color: white;
 
-/* FOOTER */
-footer {
-    margin-top: 30px;
-    padding: 45px 5%;
-    background: #050711;
-    border-top: 1px solid rgba(110, 231, 255, 0.1);
-    text-align: center;
-}
+            text-decoration: none;
 
-footer h2 {
-    margin-bottom: 10px;
-}
+            padding: 12px 22px;
 
-footer p {
-    color: #94a3b8;
-    font-size: 14px;
-}
+            border-radius: 5px;
 
-/* MOBILE */
-@media (max-width: 768px) {
+            font-weight: bold;
 
-    header {
-        padding: 0 20px;
-    }
+            transition: 0.3s;
+        }
 
-    .logo {
-        margin-right: 20px;
-        font-size: 20px;
-    }
+        .read-more:hover {
+            background: #1d9bf0;
+        }
 
-    nav {
-        display: none;
-    }
+        /* HERO DOTS */
 
-    .search input {
-        width: 150px;
-    }
+        .hero-dots {
+            position: absolute;
 
-    .hero {
-        height: 520px;
-    }
+            bottom: 30px;
+            left: 50%;
 
-    .hero-content {
-        padding: 80px 25px;
-    }
+            transform: translateX(-50%);
 
-    .hero h1 {
-        font-size: 40px;
-    }
+            display: flex;
+            gap: 8px;
 
-    .hero-description {
-        font-size: 15px;
-    }
+            z-index: 10;
+        }
 
-    section {
-        padding: 40px 20px;
-    }
-}
-</style>
+        .hero-dot {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #667085;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .hero-dot.active {
+            background: #6ee7ff;
+            transform: scale(1.3);
+        }
+
+        /* SECTIONS */
+
+        section {
+            padding: 55px 50px 0;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        .section-title span {
+            color: #6ee7ff;
+        }
+
+        /* REVIEW SLIDER */
+
+        .review-wrapper {
+            position: relative;
+        }
+
+        .review-slider {
+            display: flex;
+
+            gap: 20px;
+
+            overflow-x: auto;
+
+            scroll-behavior: smooth;
+
+            scrollbar-width: none;
+
+            padding-bottom: 10px;
+        }
+
+        .review-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .movie-card {
+            flex: 0 0 220px;
+
+            text-decoration: none;
+            color: white;
+        }
+
+        .movie-card img {
+            width: 220px;
+            height: 320px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+
+            display: block;
+
+            transition: 0.3s;
+        }
+
+        .movie-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .movie-info {
+            padding-top: 12px;
+        }
+
+        .movie-info h3 {
+            font-size: 16px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .movie-info p {
+            color: #6ee7ff;
+
+            font-size: 14px;
+
+            margin-top: 6px;
+        }
+
+        /* SLIDER ARROWS */
+
+        .slider-arrow {
+            position: absolute;
+
+            top: 45%;
+
+            transform: translateY(-50%);
+
+            width: 42px;
+            height: 42px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: rgba(8, 11, 24, 0.85);
+
+            color: white;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+            z-index: 5;
+        }
+
+        .slider-arrow:hover {
+            background: #1683d8;
+        }
+
+        .slider-arrow.left {
+            left: -20px;
+        }
+
+        .slider-arrow.right {
+            right: -20px;
+        }
+
+        /* SMALL MOVIE ROWS */
+
+        .movie-row {
+            display: flex;
+
+            gap: 20px;
+
+            overflow-x: auto;
+
+            scrollbar-width: none;
+
+            padding-bottom: 10px;
+        }
+
+        .movie-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .small-card {
+            flex: 0 0 170px;
+        }
+
+        .small-card img {
+            width: 170px;
+            height: 250px;
+
+            object-fit: cover;
+
+            border-radius: 7px;
+
+            display: block;
+
+            transition: 0.3s;
+        }
+
+        .small-card img:hover {
+            transform: scale(1.04);
+        }
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 80px;
+
+            padding: 35px 50px;
+
+            border-top: 1px solid rgba(110, 231, 255, 0.12);
+
+            text-align: center;
+
+            color: #777f96;
+
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            header {
+                padding: 0 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .search input {
+                width: 150px;
+            }
+
+            .hero {
+                height: 550px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-description {
+                font-size: 15px;
+            }
+
+            section {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .slider-arrow.left {
+                left: 0;
+            }
+
+            .slider-arrow.right {
+                right: 0;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<header>
 
-    <div class="logo">
-        MOVIE <span>REALITY</span>
-    </div>
+    <!-- HEADER -->
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="#movies">Movies</a>
-        <a href="#genre">Genre</a>
-        <a href="#artists">Artists</a>
-        <a href="about.html">About</a>
-    </nav>
+    <header>
 
-    <div class="search">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search movies..."
-        >
-    </div>
+        <div class="logo">
+            MOVIE <span>REALITY</span>
+        </div>
 
-</header>
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#movies">
+                Movies
+            </a>
+
+            <a href="#genre">
+                Genre
+            </a>
+
+            <a href="#artists">
+                Artists
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+        </nav>
+
+        <div class="search">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search movies..."
+            >
+
+        </div>
+
+    </header>
 
 
-<!-- HERO -->
+    <!-- HERO -->
 
-<div class="hero" id="heroContainer"></div>
+    <div
+        class="hero"
+        id="heroContainer"
+    ></div>
 
 
-<!-- LATEST REVIEWS -->
+    <!-- LATEST REVIEWS -->
 
-<section id="movies">
+    <section id="movies">
 
-    <h2 class="section-title">
-        Latest <span>Reviews</span>
-    </h2>
+        <h2 class="section-title">
+            Latest <span>Reviews</span>
+        </h2>
 
-    <div class="review-wrapper">
+        <div class="review-wrapper">
 
-        <button
-            class="slider-arrow left"
-            onclick="slideReviews(-1)"
-        >
-            ‹
-        </button>
+            <button
+                class="slider-arrow left"
+                onclick="slideReviews(-1)"
+            >
+                ‹
+            </button>
+
+            <div
+                class="review-slider"
+                id="reviewSlider"
+            ></div>
+
+            <button
+                class="slider-arrow right"
+                onclick="slideReviews(1)"
+            >
+                ›
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- TOP MOVIES -->
+
+    <section>
+
+        <h2 class="section-title">
+            Top <span>Movies</span>
+        </h2>
 
         <div
-            class="review-slider"
-            id="reviewSlider"
+            class="movie-row"
+            id="topMovies"
         ></div>
 
-        <button
-            class="slider-arrow right"
-            onclick="slideReviews(1)"
-        >
-            ›
-        </button>
-
-    </div>
-
-</section>
+    </section>
 
 
-<!-- TOP MOVIES -->
+    <!-- LATEST MOVIES -->
 
-<section>
+    <section>
 
-    <h2 class="section-title">
-        Top <span>Movies</span>
-    </h2>
+        <h2 class="section-title">
+            Latest <span>Movies</span>
+        </h2>
 
-    <div class="movie-row" id="topMovies"></div>
+        <div
+            class="movie-row"
+            id="latestMovies"
+        ></div>
 
-</section>
-
-
-<!-- LATEST MOVIES -->
-
-<section>
-
-    <h2 class="section-title">
-        Latest <span>Movies</span>
-    </h2>
-
-    <div class="movie-row" id="latestMovies"></div>
-
-</section>
+    </section>
 
 
-<!-- COMING SOON -->
+    <!-- COMING SOON -->
 
-<section>
+    <section>
 
-    <h2 class="section-title">
-        Coming <span>Soon</span>
-    </h2>
+        <h2 class="section-title">
+            Coming <span>Soon</span>
+        </h2>
 
-    <div class="movie-row" id="comingSoon"></div>
+        <div
+            class="movie-row"
+            id="comingSoon"
+        ></div>
 
-</section>
+    </section>
 
 
-<!-- FOOTER -->
+    <!-- FOOTER -->
 
-<footer>
+    <footer>
 
-    <h2>MOVIE REALITY</h2>
-
-    <p>
+        © 2026 Movie Reality.
         Worth your time or a waste of it?
-    </p>
 
-    <p style="margin-top:12px;">
-        © 2026 Movie Reality
-    </p>
+    </footer>
 
-</footer>
 
+    <!-- MOVIE DATABASE MUST LOAD FIRST -->
 
-<!-- MOVIE DATABASE MUST LOAD FIRST -->
+    <script src="movies.js"></script>
 
-<script src="movies.js"></script>
 
+    <script>
 
-<script>
+        /* =========================
+           HERO
+        ========================= */
 
-/* HERO */
+        const heroContainer =
+            document.getElementById("heroContainer");
 
-const heroContainer =
-    document.getElementById("heroContainer");
 
-const heroMovies =
-    movies.filter(movie => movie.reviewAvailable);
-
-heroContainer.innerHTML = "";
-
-heroMovies.forEach((movie, index) => {
-
-    const slide =
-        document.createElement("div");
-
-    slide.className =
-        "hero-slide" +
-        (index === 0 ? " active" : "");
-
-    slide.style.backgroundImage =
-        `url('${movie.poster}')`;
-
-    slide.innerHTML = `
-        <div class="hero-content">
-
-            <div class="hero-text">
-
-                <div class="hero-label">
-                    MOVIE REALITY REVIEW
-                </div>
-
-                <h1>${movie.title}</h1>
-
-                <p class="hero-description">
-                    ${movie.synopsis}
-                </p>
-
-                <div class="rating">
-                    MRP Rating:
-                    <span>${movie.mrp}/10</span>
-                </div>
-
-                <a
-                    href="${movie.id}.html"
-                    class="read-more"
-                >
-                    Read More
-                </a>
-
-            </div>
-
-        </div>
-    `;
-
-    heroContainer.appendChild(slide);
-
-});
-
-
-/* HERO DOTS */
-
-const heroDotsContainer =
-    document.createElement("div");
-
-heroDotsContainer.className =
-    "hero-dots";
-
-heroContainer.appendChild(heroDotsContainer);
-
-
-heroMovies.forEach((movie, index) => {
-
-    const dot =
-        document.createElement("div");
-
-    dot.className =
-        "hero-dot" +
-        (index === 0 ? " active" : "");
-
-    dot.addEventListener(
-        "click",
-        () => showHero(index)
-    );
-
-    heroDotsContainer.appendChild(dot);
-
-});
-
-
-const heroSlides =
-    document.querySelectorAll(".hero-slide");
-
-const heroDots =
-    document.querySelectorAll(".hero-dot");
-
-let currentHero = 0;
-
-
-function showHero(index) {
-
-    heroSlides.forEach((slide, i) => {
-
-        slide.classList.toggle(
-            "active",
-            i === index
-        );
-
-    });
-
-    heroDots.forEach((dot, i) => {
-
-        dot.classList.toggle(
-            "active",
-            i === index
-        );
-
-    });
-
-    currentHero = index;
-
-}
-
-
-function nextHero() {
-
-    if (heroSlides.length === 0) {
-        return;
-    }
-
-    currentHero =
-        (currentHero + 1) %
-        heroSlides.length;
-
-    showHero(currentHero);
-
-}
-
-
-setInterval(nextHero, 6000);
-
-
-/* LATEST REVIEWS */
-
-const reviewSlider =
-    document.getElementById("reviewSlider");
-
-const reviewedMovies =
-    movies.filter(movie => movie.reviewAvailable);
-
-
-reviewedMovies.forEach(movie => {
-
-    const card =
-        document.createElement("a");
-
-    card.href =
-        `${movie.id}.html`;
-
-    card.className =
-        "movie-card";
-
-    card.innerHTML = `
-        <img
-            src="${movie.poster}"
-            alt="${movie.title}"
-        >
-
-        <div class="movie-info">
-
-            <h3>${movie.title}</h3>
-
-            <p>
-                MRP ${movie.mrp}/10
-            </p>
-
-        </div>
-    `;
-
-    reviewSlider.appendChild(card);
-
-});
-
-
-/* TOP MOVIES */
-
-const topMovies =
-    document.getElementById("topMovies");
-
-const sortedMovies =
-    [...movies]
-    .sort((a, b) => b.mrp - a.mrp);
-
-
-sortedMovies.forEach(movie => {
-
-    const card =
-        document.createElement("div");
-
-    card.className =
-        "small-card";
-
-    card.innerHTML = `
-        <img
-            src="${movie.poster}"
-            alt="${movie.title}"
-            title="${movie.title}"
-        >
-    `;
-
-    topMovies.appendChild(card);
-
-});
-
-
-/* LATEST MOVIES */
-
-const latestMovies =
-    document.getElementById("latestMovies");
-
-const latestSorted =
-    [...movies]
-    .sort((a, b) => b.year - a.year);
-
-
-latestSorted.forEach(movie => {
-
-    const card =
-        document.createElement("div");
-
-    card.className =
-        "small-card";
-
-    card.innerHTML = `
-        <img
-            src="${movie.poster}"
-            alt="${movie.title}"
-            title="${movie.title}"
-        >
-    `;
-
-    latestMovies.appendChild(card);
-
-});
-
-
-/* COMING SOON */
-
-const comingSoon =
-    document.getElementById("comingSoon");
-
-movies.forEach(movie => {
-
-    const card =
-        document.createElement("div");
-
-    card.className =
-        "small-card";
-
-    card.innerHTML = `
-        <img
-            src="${movie.poster}"
-            alt="${movie.title}"
-            title="${movie.title}"
-        >
-    `;
-
-    comingSoon.appendChild(card);
-
-});
-
-
-/* LATEST REVIEWS SLIDER */
-
-function slideReviews(direction) {
-
-    const slider =
-        document.getElementById(
-            "reviewSlider"
-        );
-
-    slider.scrollBy({
-
-        left: direction * 650,
-
-        behavior: "smooth"
-
-    });
-
-}
-
-
-/* SEARCH */
-
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
-
-
-searchInput.addEventListener(
-    "input",
-    function () {
-
-        const searchValue =
-            this.value.toLowerCase().trim();
-
-        const cards =
-            document.querySelectorAll(
-                "#reviewSlider .movie-card"
+        const heroMovies =
+            movies.filter(
+                movie => movie.reviewAvailable
             );
 
-        cards.forEach(card => {
 
-            const title =
-                card.innerText.toLowerCase();
+        heroMovies.forEach(
+            (movie, index) => {
 
-            card.style.display =
-                title.includes(searchValue)
-                ? "block"
-                : "none";
+                const slide =
+                    document.createElement("div");
 
-        });
 
-    }
-);
+                slide.className =
+                    "hero-slide" +
+                    (index === 0
+                        ? " active"
+                        : "");
 
-</script>
+
+                slide.style.backgroundImage =
+                    `url('${movie.poster}')`;
+
+
+                slide.innerHTML = `
+
+                    <div class="hero-content">
+
+                        <div class="hero-text">
+
+                            <div class="hero-label">
+                                MOVIE REALITY REVIEW
+                            </div>
+
+                            <h1>
+                                ${movie.title}
+                            </h1>
+
+                            <p class="hero-description">
+                                ${movie.synopsis}
+                            </p>
+
+                            <div class="rating">
+
+                                MRP Rating:
+
+                                <span>
+                                    ${movie.mrp}/10
+                                </span>
+
+                            </div>
+
+                            <a
+                                href="${movie.id}.html"
+                                class="read-more"
+                            >
+                                Read More
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                heroContainer.appendChild(
+                    slide
+                );
+
+            }
+        );
+
+
+        /* =========================
+           HERO DOTS
+        ========================= */
+
+        const heroDotsContainer =
+            document.createElement("div");
+
+
+        heroDotsContainer.className =
+            "hero-dots";
+
+
+        heroContainer.appendChild(
+            heroDotsContainer
+        );
+
+
+        heroMovies.forEach(
+            (movie, index) => {
+
+                const dot =
+                    document.createElement("div");
+
+
+                dot.className =
+                    "hero-dot" +
+                    (index === 0
+                        ? " active"
+                        : "");
+
+
+                dot.addEventListener(
+                    "click",
+                    () => showHero(index)
+                );
+
+
+                heroDotsContainer.appendChild(
+                    dot
+                );
+
+            }
+        );
+
+
+        const heroSlides =
+            document.querySelectorAll(
+                ".hero-slide"
+            );
+
+
+        const heroDots =
+            document.querySelectorAll(
+                ".hero-dot"
+            );
+
+
+        let currentHero = 0;
+
+
+        function showHero(index) {
+
+            heroSlides.forEach(
+                (slide, i) => {
+
+                    slide.classList.toggle(
+                        "active",
+                        i === index
+                    );
+
+                }
+            );
+
+
+            heroDots.forEach(
+                (dot, i) => {
+
+                    dot.classList.toggle(
+                        "active",
+                        i === index
+                    );
+
+                }
+            );
+
+
+            currentHero = index;
+
+        }
+
+
+        function nextHero() {
+
+            if (
+                heroSlides.length === 0
+            ) {
+                return;
+            }
+
+
+            currentHero =
+                (currentHero + 1) %
+                heroSlides.length;
+
+
+            showHero(currentHero);
+
+        }
+
+
+        setInterval(
+            nextHero,
+            6000
+        );
+
+
+        /* =========================
+           LATEST REVIEWS
+        ========================= */
+
+        const reviewSlider =
+            document.getElementById(
+                "reviewSlider"
+            );
+
+
+        const reviewedMovies =
+            movies.filter(
+                movie => movie.reviewAvailable
+            );
+
+
+        reviewedMovies.forEach(
+            movie => {
+
+                const card =
+                    document.createElement("a");
+
+
+                card.href =
+                    `${movie.id}.html`;
+
+
+                card.className =
+                    "movie-card";
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${movie.poster}"
+                        alt="${movie.title}"
+                    >
+
+                    <div class="movie-info">
+
+                        <h3>
+                            ${movie.title}
+                        </h3>
+
+                        <p>
+                            MRP ${movie.mrp}/10
+                        </p>
+
+                    </div>
+
+                `;
+
+
+                reviewSlider.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        /* =========================
+           TOP MOVIES
+        ========================= */
+
+        const topMovies =
+            document.getElementById(
+                "topMovies"
+            );
+
+
+        const sortedMovies =
+            [...movies].sort(
+                (a, b) =>
+                    b.mrp - a.mrp
+            );
+
+
+        sortedMovies.forEach(
+            movie => {
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "small-card";
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${movie.poster}"
+                        alt="${movie.title}"
+                        title="${movie.title}"
+                    >
+
+                `;
+
+
+                topMovies.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        /* =========================
+           LATEST MOVIES
+        ========================= */
+
+        const latestMovies =
+            document.getElementById(
+                "latestMovies"
+            );
+
+
+        const latestSorted =
+            [...movies].sort(
+                (a, b) =>
+                    b.year - a.year
+            );
+
+
+        latestSorted.forEach(
+            movie => {
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "small-card";
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${movie.poster}"
+                        alt="${movie.title}"
+                        title="${movie.title}"
+                    >
+
+                `;
+
+
+                latestMovies.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        /* =========================
+           COMING SOON
+        ========================= */
+
+        const comingSoon =
+            document.getElementById(
+                "comingSoon"
+            );
+
+
+        movies.forEach(
+            movie => {
+
+                const card =
+                    document.createElement("div");
+
+
+                card.className =
+                    "small-card";
+
+
+                card.innerHTML = `
+
+                    <img
+                        src="${movie.poster}"
+                        alt="${movie.title}"
+                        title="${movie.title}"
+                    >
+
+                `;
+
+
+                comingSoon.appendChild(
+                    card
+                );
+
+            }
+        );
+
+
+        /* =========================
+           LATEST REVIEWS SLIDER
+        ========================= */
+
+        function slideReviews(
+            direction
+        ) {
+
+            const slider =
+                document.getElementById(
+                    "reviewSlider"
+                );
+
+
+            slider.scrollBy({
+
+                left:
+                    direction * 650,
+
+                behavior:
+                    "smooth"
+
+            });
+
+        }
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        const searchInput =
+            document.getElementById(
+                "searchInput"
+            );
+
+
+        searchInput.addEventListener(
+            "input",
+            function () {
+
+                const searchValue =
+                    this.value
+                        .toLowerCase()
+                        .trim();
+
+
+                const cards =
+                    document.querySelectorAll(
+                        "#reviewSlider .movie-card"
+                    );
+
+
+                cards.forEach(
+                    card => {
+
+                        const title =
+                            card.innerText
+                                .toLowerCase();
+
+
+                        card.style.display =
+                            title.includes(
+                                searchValue
+                            )
+                            ? "block"
+                            : "none";
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+<script src="movies.js"></script>
 
 </body>
+
 </html>
+
