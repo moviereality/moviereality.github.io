@@ -1,10 +1,15 @@
+```javascript
 const movies = [
 
     {
         id: "project-hail-mary",
+
         title: "Project Hail Mary",
+
         year: 2026,
+
         poster: "project-hail-mary.jpg",
+
         mrp: 9.5,
 
         genres: [
@@ -37,9 +42,13 @@ const movies = [
 
     {
         id: "movie-2",
+
         title: "Movie 2",
+
         year: 2025,
+
         poster: "movie-2.jpg",
+
         mrp: 8.2,
 
         genres: [
@@ -69,9 +78,13 @@ const movies = [
 
     {
         id: "movie-3",
+
         title: "Movie 3",
+
         year: 2025,
+
         poster: "movie-3.jpg",
+
         mrp: 7.8,
 
         genres: [
@@ -98,3 +111,4 @@ const movies = [
     }
 
 ];
+```
